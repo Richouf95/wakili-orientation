@@ -60,7 +60,6 @@ export default function RootLayout({
         >
           Wakili Services | {currentYear}
         </footer>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.4.1/flowbite.min.js"></script>
       </body>
     </html>
   );
