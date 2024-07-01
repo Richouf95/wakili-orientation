@@ -6,6 +6,7 @@ import Image from "next/image";
 import etablissement from "/public/images/ched-etablissements.png";
 import orientation from "/public/images/illustration-du-concept-orientation-professionnelle.png";
 import analyse from "/public/images/analyse.png";
+import Link from "next/link";
 
 function Carousel({ items }: any) {
   const { currentIndex, prevSlide, nextSlide } = useCarousel();
@@ -96,9 +97,9 @@ function Carousel({ items }: any) {
   return (
     <div className="relative w-full overflow-hidden">
       <div className="flex justify-end mb-5">
-        <button className="bg-[#444747] text-white font-bold py-2 px-5 rounded-full">
+        <Link href='/search/full-list' className="bg-[#444747] text-white font-bold py-2 px-5 rounded-full">
           Sauter
-        </button>
+        </Link>
       </div>
       <div className="flex transition-transform duration-500">
         {currentIndex === 0

@@ -1,0 +1,122 @@
+"use client";
+
+import { useState } from "react";
+import ServiceSelect from "@/components/search_filter_inputs/ServiceSelect";
+import * as React from "react";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { Stack } from "@mui/material";
+import Button from "@mui/material/Button";
+import NiveauSelect from "@/components/search_filter_inputs/NiveauSelect";
+import LocalisationSelect from "@/components/search_filter_inputs/LocalisationSelect";
+import TypeSelect from "@/components/search_filter_inputs/TypeSelect";
+import FormationSelect from "@/components/search_filter_inputs/FomationSelect";
+import TablePagination from "@mui/material/TablePagination";
+import ResultTable from "@/components/ResultTable";
+
+import School from "@/data/schoolModel";
+
+function SearchFullList() {
+  const [nomEtablissement, setNomEtablissement] = useState("");
+  const [formation, setFormation] = useState("");
+  const [niveauEtude, setNiveauEtude] = useState("");
+  const [localisation, setLocalisation] = useState("");
+  const [typeEtablissement, setTypeEtablissement] = useState("");
+  const [servicesParaScolaire, setServicesParaScolaire] = useState<string[]>(
+    []
+  );
+  const [searchData, setSearchData] = useState({});
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const searchTags = {
+      nomEtablissement,
+      formation,
+      niveauEtude,
+      localisation,
+      typeEtablissement,
+      servicesParaScolaire,
+    };
+    setSearchData(searchTags);
+    console.log("Search Tags:", searchTags);
+  };
+
+  const s1 = new School("Example School1");
+  const s2 = new School("Example School2");
+  const s3 = new School("Example School3");
+
+  console.log(s1, s2, s3)
+
+  return (
+    <div className="mt-10">
+      <div className="bg-gray-100 p-6 rounded-lg shadow-lg mb-8">
+        <h2 className="text-2xl font-bold mb-4">Rechercher des Écoles</h2>
+        <form className="space-y-4" onSubmit={handleSubmit}>
+          <Box sx={{ width: 1 }}>
+            <TextField
+              fullWidth
+              label="Nom de l'établissement"
+              id="nomEtablissement"
+              onChange={(e) => setNomEtablissement(e.target.value)}
+            />
+          </Box>
+          <Box sx={{ width: 1 }}>
+            <FormationSelect
+              formation={formation}
+              setFormation={setFormation}
+            />
+          </Box>
+          <Stack
+            spacing={3}
+            direction="row"
+            sx={{ marginBottom: 4, width: 1 }}
+            className="flex justify-center"
+          >
+            <NiveauSelect
+              niveauEtude={niveauEtude}
+              setNiveauEtude={setNiveauEtude}
+            />
+            <LocalisationSelect
+              localisation={localisation}
+              setLocalisation={setLocalisation}
+            />
+          </Stack>
+          <Stack
+            spacing={3}
+            direction="row"
+            sx={{ marginBottom: 4 }}
+            className="flex justify-center"
+          >
+            <TypeSelect
+              typeEtablissement={typeEtablissement}
+              setTypeEtablissement={setTypeEtablissement}
+            />
+            <ServiceSelect
+              servicesParaScolaire={servicesParaScolaire}
+              setServicesParaScolaire={setServicesParaScolaire}
+            />
+          </Stack>
+
+          <div className="text-center">
+            <button
+              type="submit"
+              className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-5 rounded-full w-3/5"
+            >
+              Rechercher
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div className="max-w-screen-lg container overflow-x-auto bg-white rounded-lg shadow-md">
+        <ResultTable />
+      </div>
+    </div>
+  );
+}
+
+export default SearchFullList;
