@@ -17,19 +17,22 @@ export default function RootLayout({
   const currentYear = currentDate.getFullYear();
   return (
     <html lang="fr">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </head>
       <body className="flex flex-col min-h-screen">
         <header
+          className="fixed top-0 left-0 right-0 w-full bg-white z-10"
           style={{
             boxShadow: "0px 5px 20px -5px",
             borderRadius: "0px 0px 20px 20px",
           }}
-          className="fixed top-0 left-0 right-0 w-full bg-white z-10"
         >
-          <div className="container mx-auto flex justify-around items-center">
-            <div>
+          <div className="container mx-auto flex justify-between items-center px-4 py-2">
+            <div className="flex-shrink-0">
               <Image src={logoWakili} alt="Logo Wakili" width={150} />
             </div>
-            <ul className="flex gap-5">
+            <ul className="flex gap-5 flex-wrap">
               <li>
                 <button className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-5 rounded-full">
                   Hehe
@@ -43,15 +46,17 @@ export default function RootLayout({
             </ul>
           </div>
         </header>
-        <main className="flex-grow flex items-center justify-center pt-20 pb-20">
-          {children}
+        <main className="flex-grow pt-20 pb-20">
+          <div className="container mx-auto">
+            {children}
+          </div>
         </main>
         <footer
+          className="w-full bg-white py-4 flex justify-center items-center font-bold"
           style={{
             boxShadow: "5px 0px 20px -5px",
             borderRadius: "20px 20px 0px 0px",
           }}
-          className="fixed bottom-0 left-0 right-0 w-full bg-white py-4 flex justify-center items-center font-bold"
         >
           Wakili Services | {currentYear}
         </footer>

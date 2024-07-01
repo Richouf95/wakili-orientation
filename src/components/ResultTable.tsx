@@ -2,7 +2,6 @@ import { useState } from 'react';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
-// Exemple de données (vous pouvez les remplacer par vos données réelles)
 const data = [
   { name: "École A", type: "Primaire", location: "Niamey", establishment: "Public", services: ["Finance", "Banque", "Développement"], extra: "Cantine, Transport" },
   { name: "École B", type: "Secondaire", location: "Zinder", establishment: "Privé", services: ["Informatique", "Commerce"], extra: "Transport" },
@@ -10,16 +9,11 @@ const data = [
   // ...
 ];
 
-// Nombre d'éléments par page
 const itemsPerPage = 5;
 
 const ResultTable = () => {
   const [currentPage, setCurrentPage] = useState(0);
-
-  // Diviser les données en pages
   const paginatedData = data.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
-
-  // Nombre total de pages
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
   const handlePreviousPage = () => {
@@ -35,7 +29,7 @@ const ResultTable = () => {
   };
 
   return (
-    <div>
+    <div className="max-w-full overflow-x-auto md:max-w-none">
       <table className="min-w-full bg-white">
         <thead className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
           <tr>
@@ -75,7 +69,7 @@ const ResultTable = () => {
           <KeyboardArrowLeftIcon />
         </button>
         
-        <span>Page {currentPage + 1} sur {totalPages}</span>
+        <span className="mx-4">Page {currentPage + 1} sur {totalPages}</span>
         
         <button
           onClick={handleNextPage}
