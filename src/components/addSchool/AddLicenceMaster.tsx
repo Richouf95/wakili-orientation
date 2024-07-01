@@ -19,7 +19,7 @@ function AddLicenceMaster() {
       </Box>
       {nombreFormation.map((i, index) => {
         return (
-          <div className="flex justify-end">
+          <div className="flex justify-end" key={index}>
             <Box sx={{ width: 700, my: 2 }}>
               <TextField
                 fullWidth

@@ -35,7 +35,7 @@ function AddProgram() {
         </button>
       </div>
       {nombreLot.map((i, index) => {
-        return <AddLicenceMaster />;
+        return <AddLicenceMaster key={index}/>;
       })}
     </div>
   );
