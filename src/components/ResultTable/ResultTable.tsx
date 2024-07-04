@@ -3,37 +3,11 @@ import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import FormationTableRow from "./FormationTableRow";
 
-const data = [
-  {
-    name: "École A",
-    type: "Primaire",
-    location: "Niamey",
-    establishment: "Public",
-    services: ["Finance", "Banque", "Développement"],
-    extra: "Cantine, Transport",
-  },
-  {
-    name: "École B",
-    type: "Secondaire",
-    location: "Zinder",
-    establishment: "Privé",
-    services: ["Informatique", "Commerce"],
-    extra: "Transport",
-  },
-  // Ajoutez autant de lignes de données que nécessaire
-  // ...
-];
-
 const itemsPerPage = 5;
-
-// interface ResultTableProps {
-//   data: object
-// }
 
 const ResultTable = ({ data }: any) => {
   const [currentPage, setCurrentPage] = useState(0);
-  // const paginatedData = data.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
-  const paginatedData = data;
+  const paginatedData = data.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
   const handlePreviousPage = () => {
@@ -78,25 +52,6 @@ const ResultTable = ({ data }: any) => {
                 </td>
                 <td className="px-6 py-4 max-w-xs break-words overflow-hidden text-ellipsis">
                   <FormationTableRow program={item.program} />
-                  {/* <ul>
-                    <li>{item.program.bts.name}</li>
-                    <li>
-                      {item.program.LicenceMaster.autorizeDecree}
-                      <ul>
-                        {item.program.LicenceMaster.formations &&
-                          item.program.LicenceMaster.formations.map(
-                            (i: any, index: any) => {
-                              return <li key={index}>{i}</li>;
-                            }
-                          )}
-                      </ul>
-                    </li>
-                  </ul> */}
-                  {/* <ul>
-                  {item.program.map((service:any, serviceIndex:any) => (
-                    <li key={serviceIndex} className="break-words whitespace-normal">{service}</li>
-                  ))}
-                </ul> */}
                 </td>
                 <td className="py-3 px-6 text-left">{item.extra ? item.extra : "N/A"}</td>
               </tr>

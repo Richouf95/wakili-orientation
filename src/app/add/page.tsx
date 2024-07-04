@@ -31,8 +31,6 @@ function AddSchool() {
   const [typeEtablissement, setTypeEtablissement] = useState("");
   const [niveauEtude, setNiveauEtude] = useState("");
 
-  console.log(nameBTS);
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const btsNameDefining = !ifBTSNomClassique ? nameBTS : "BTS Etat";

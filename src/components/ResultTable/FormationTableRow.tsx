@@ -1,7 +1,6 @@
 import React from "react";
 
 function FormationTableRow({ program }: any) {
-  console.log(program);
   return (
     <>
       <ul>

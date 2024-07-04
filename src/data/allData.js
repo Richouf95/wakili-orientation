@@ -740,4 +740,7 @@ const allSchoolData = [
   }
 ]
 
+
+console.log(allSchoolData.length)
+
 export default allSchoolData;

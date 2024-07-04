@@ -15,8 +15,6 @@ function AddProgram() {
     setBtsOrLicencMaster(event.target.value);
   };
 
-  console.log(btsOrLicencMaster);
-
   return (
     <div>
       <h3 className="text-xl font-bold mb-4 text-center">
