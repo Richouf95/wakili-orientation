@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ServiceSelect from "@/components/search_filter_inputs/ServiceSelect";
 import * as React from "react";
 import Box from "@mui/material/Box";
@@ -10,11 +10,16 @@ import NiveauSelect from "@/components/search_filter_inputs/NiveauSelect";
 import LocalisationSelect from "@/components/search_filter_inputs/LocalisationSelect";
 import TypeSelect from "@/components/search_filter_inputs/TypeSelect";
 import FormationSelect from "@/components/search_filter_inputs/FomationSelect";
-import ResultTable from "@/components/ResultTable";
+import ResultTable from "@/components/ResultTable/ResultTable";
+import allSchoolData from "@/data/allData"
+
 
 import School from "@/data/schoolModel";
 
 function SearchFullList() {
+
+  const [data, setData] = useState<any>([]);
+
   const [nomEtablissement, setNomEtablissement] = useState("");
   const [formation, setFormation] = useState("");
   const [niveauEtude, setNiveauEtude] = useState("");
@@ -24,6 +29,10 @@ function SearchFullList() {
     []
   );
   const [searchData, setSearchData] = useState({});
+
+  useEffect(() => {
+    setData(allSchoolData);
+  }, [])
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -43,7 +52,7 @@ function SearchFullList() {
   const s2 = new School("Example School2");
   const s3 = new School("Example School3");
 
-  console.log(s1, s2, s3);
+  // console.log(s1, s2, s3);
 
   return (
     <div className="mt-10 px-4">
@@ -106,7 +115,7 @@ function SearchFullList() {
         </form>
       </div>
 
-        <ResultTable />
+        <ResultTable data={data} />
     </div>
   );
 }

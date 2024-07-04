@@ -1,0 +1,741 @@
+[
+  {
+    "t_id": "Az_1",
+    "name": " Ecole Supérieure d’Economie et de Gestion(ESEG) Quartier aéroport",
+    "openingDecree": "N°014/MES/R/SG/DGE/DL/DES/DEPRI du 27/01/2014 Rectificatif N°OO039 du 07/04/2015",
+    "localisation": "Agadez",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "BTS d’Etat"
+      },
+      "LicenceMaster": [
+        {
+          "autorizeDecree": "Arrêté provisoire N°00138/MES/R/I/SG/DGE/DESPIDESPRI du 21/11/14",
+          "formations": [
+            "Gestion des Projets (PG)",
+            "Gestion des Ressources Humaines (GRH)",
+            "Micro Finance",
+            "Conseiller en Administration Scolaire et Universitaire (CASU)"
+          ]
+        },
+        {
+          "autorizeDecree": " Arrêté provisoire N°0095/MES/R/I/SG/DGE/DESP/DESPRI du 15/09/15",
+          "formations": [
+            "Communication des Entreprises",
+            "Logistique- Transport",
+            "Finance- Banque"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "t_id": "Az_2",
+    "name": " Ecole Supérieure de Management(ESM) Quartier toudou",
+    "openingDecree": "N° 0087/MES/R/SG/DGE/DL/DES/DEPRI du 7/08/2014",
+    "localisation": "Agadez",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": null
+      },
+      "LicenceMaster": [
+        {
+          "autorizeDecree": "Arrété provisoire n°0097/MESlR/I/SG/DGE/DESP/DESPRI du 15/09/15",
+          "formations": [
+            "Management des Entreprises",
+            "Logistique- Transport",
+            "Management des Ressources Humaines"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "t_id": "Az_3",
+    "name": "lnstitut Pratique de Santé Publique(IPSP) Quartier toudou",
+    "openingDecree": "N°00036/MEMS/RS/SG/DGE/DL/DES/DEPRI du 30/01/2013",
+    "localisation": "Agadez",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "Diplôme d’Etat en santé"
+      },
+      "LicenceMaster": []
+    }
+  },
+  {
+    "t_id": "Az_4",
+    "name": "Centre Privé de Santé Publique (CPSP) amarewat",
+    "openingDecree": "N°0032/MESS/R/T/SG/DGE/DL/DES/DEPRI du 20/01/2006",
+    "localisation": "Agadez",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "Diplôme d’Etat en santé"
+      },
+      "LicenceMaster": [
+        {
+          "autorizeDecree": "0032/MESS/R/T/SGlDGE/DL/DES/DEPRI du  20/01/2006",
+          "formations": [
+            "Technicien en Soins Obstétricaux (à régulariser)"
+          ]
+        },
+        {
+          "autorizeDecree": "Arrêté provisoire n°0016/MES/R/I/SG/DGE/DESP/DESPRI du 11i02/16",
+          "formations": [
+            "Nutrition"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "t_id": "Az_5",
+    "name": "Institut Supérieur Privé Tamgak (ISPT Arlit)",
+    "openingDecree": "N°000132/MESS/R/T/SG/DGE/DL/DES/DEPRI du 21/05/2013",
+    "localisation": "Agadez",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "BTS d'Etat"
+      },
+      "LicenceMaster": []
+    }
+  },
+  {
+    "t_id": "Da_1",
+    "name": "Institut Supérieur de Sante (ISS)",
+    "openingDecree": "L'°0079/MESS/R/T/SG/DGE/DL/DES/ DEPR1 de 06/04/2011",
+    "localisation": "Diffa",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "Diplôme d’Etat en santé"
+      },
+      "LicenceMaster": []
+    }
+  },
+  {
+    "t_id": "Do_1",
+    "name": "Institut Supérieur des Paramédicaux Nightingale (ISPN Gaya) plateau",
+    "openingDecree": "N°00128/MES/RI//SG/DGE/DL/DE S/DESPRI du 09/11/2015",
+    "localisation": "Dosso",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "Diplôme d’Etat en santé"
+      },
+      "LicenceMaster": []
+    }
+  },
+  {
+    "t_id": "Do_2",
+    "name": "Institut International de Santé (2IS à Gaya) plateau",
+    "openingDecree": "N°0035/MES/RI//SG/DGE/DL/DES/ DESPRI du  30/03/2016",
+    "localisation": "Dosso",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "Diplôme d’Etat en santé"
+      },
+      "LicenceMaster": []
+    }
+  },
+  {
+    "t_id": "Do_3",
+    "name": "Institut Supérieur Privé des Professionnels de Santé (ISPS de Dosso) kaidégui",
+    "openingDecree": "N°001O2/MESS/R/T/SG/DGE/DL/DES/DESPRI du 8/07/2009",
+    "localisation": "Dosso",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "Diplôme d’Etat en santé"
+      },
+      "LicenceMaster": [
+        {
+          "autorizeDecree": "Arrêté N°00102/MESS/R/T/SG/OGE/DL/DES/DEPRI du 00/00/00",
+          "formations": [
+            "Technicien en Soins Obstétricaux (à régulariser)",
+            "Technicien du Développement Social (à régulariser)",
+            "Technicien en Kinésithérapie (à régulariser)",
+            "Technicien en Biologie Médicale (à régulariser)",
+            "Technicien en Nutrition (à régulariser)",
+            "Technicien en Communication en Santé (à régulariser)",
+            "Technicien en Epidémiologie (à régulariser)",
+            "Technicien en Management et Gestion (à régulariser)",
+            "Technicien en Santé communautaire (à régulariser)",
+            "Délégué Médicale (à régulariser)"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "t_id": "Mi_1",
+    "name": "Institut Supérieur Polytechnique (INSUP) Ali dan sofo",
+    "openingDecree": "N°00173/MEMS/RS/SG/DGE/DL/DES/DEPRI du 04/08/2011",
+    "localisation": "Maradi",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "BTS d’Etat"
+      },
+      "LicenceMaster": [
+        {
+          "autorizeDecree": "Arrêté provisoire N°00146/MES/R/I/SG/DGE/DL/DESP/DESPRI du   03/12/14",
+          "formations": [
+            "Licence en Gestion des Ressources Humaines (GRH)",
+            "Licence en Comptabilité et Gestion des Entreprises",
+            "Licence en Administration et Gestion des Organisation (AGO)",
+            "Licence en Informatique de Gestion (IG)",
+            "Licence en Gestion des Projets."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "t_id": "Mi_2",
+    "name": "Ecole des Techniques Economique, Comptable, Commerciale et de Communication (ETEC) gao route dan issa",
+    "openingDecree": "N°00174/MES/R/I/SG/DGE/DL/DES/DEPRI du 04/08/2011",
+    "localisation": "Maradi",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "BTS d’Etat"
+      },
+      "LicenceMaster": [
+        {
+          "autorizeDecree": "Arrêté provisoire N°0011MES/R/I/SG/DGE/DESP/DESPRI du 03/02/15",
+          "formations": [
+            "Licence - Master en Transport — Logistique (TL)",
+            "Licence - Master en Gestion des Ressources Humaines (GRH) ",
+            "Licence - Master en Communication des Entreprises"
+          ]
+        },
+        {
+          "autorizeDecree": "Arrêté provisoire N°0013MES/R/I/SG/DGE/DESP/DESPRI du 03/02/15",
+          "formations": [
+            "Licence- Master en Comptabilité, et Gestion des Entreprises",
+            "Licence- Master en Gestion Commerciale",
+            "Licence et Master en Gestion des Projets (GP)"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "t_id": "Mi_3",
+    "name": "Université libre Bouzou Dan Zambadi Ali dan sofo",
+    "openingDecree": "N°00167/MES/R/I/SG/DGE/DL/DES/DEPRI du 08/10/2004",
+    "localisation": "Maradi",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "Diplôme d’Etat en santé"
+      },
+      "LicenceMaster": [
+        {
+          "autorizeDecree": "Arrêté provisoire n°0084MES/R/I/SG/DGE/DESP/DESPRI du 06/08/14",
+          "formations": [
+            "Licence - Master en Sciences lnfirmières et Obstétrique",
+            "Licence - Master en Santé de la Reproduction",
+            "Licence-Master en Nutrition Humaine"
+          ]
+        },
+        {
+          "autorizeDecree": "Arrêté provisoire n°009MES/R/I/SG/DGE/DESP/DESPRI du 25101/17",
+          "formations": [
+            "Licence Professionnelle en lnformatique Appliquée",
+            "Licence Professionnelle en Economie et Gestion",
+            "Master Professionnel en lnformatique Appliquée ",
+            "Master Professionnel en Economie et Gestion"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "t_id": "Mi_4",
+    "name": "Institut Supérieur Technique COTEG Ali dan sofo",
+    "openingDecree": "N°00207/MEMS/RS/SG/DGE/DL/DES/DEPRI du 30/09/2011",
+    "localisation": "Maradi",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "BTS d’Etat"
+      },
+      "LicenceMaster": [
+        {
+          "autorizeDecree": "Arrêté provisoire n°002/MES/R/I/SG/DGE/DESP/DESPRI du 18/01/17",
+          "formations": [
+            "Licence en Génie Electrique et Automatique",
+            "Licence en Génie Civil : Option BTP"
+          ]
+        },
+        {
+          "autorizeDecree": "Arrêté provisoire n°125/MES/R/I/SG/DGE/DESP/DESPRI du 16/10/17",
+          "formations": [
+            "Licence Professionnelle en Génie Civil : Option Hydraulique Licence",
+            "Professionnelle en Electromécanique : Option Maintenance Industrielle"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "t_id": "Mi_5",
+    "name": "lnstitut Supérieur de Management SODESIE zaria",
+    "openingDecree": "N°000106/MES/R/I/SG/DGE/DL/DES/DESPRI du 14/10/2015",
+    "localisation": "Maradi",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "BTS d’Etat"
+      },
+      "LicenceMaster": [
+        {
+          "autorizeDecree": "Fermé par arrêté N° 0012/MES/R/I/SG/DL/DESP/DESPRI du 07/02/17 pour ouverture frauduleuse de filières en Licence et Master, non-exécution de la décision de fermeture ordonnée par arrêté N0065/MESR/I/SG/DGE/DL/DESP/DESPRI du 9/06/2016 et insuffisance de la qualité du corps enseignant et des équipements...",
+          "formations": []
+        }
+      ]
+    }
+  },
+  {
+    "t_id": "Mi_6",
+    "name": "Maryama Abacha American University od Niger Ali dan sofo",
+    "openingDecree": "N°00010/MES/R/I/SG/DGE/DL/DESP/DESPRI du 02/02/2015",
+    "localisation": "Maradi",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "BTS d’Etat"
+      },
+      "LicenceMaster": [
+        {
+          "autorizeDecree": "Filières homologuées ",
+          "formations": [
+            "Bachelor/Master in Political Science",
+            "Bachelor/Master in International Relations",
+            "Bachelor/Master in Public Administration",
+            "Bachelor/Master Mass Communication",
+            "Bachelor/Master in Education (M.ed)",
+            "Bachelor/Master in Computer Engineering",
+            "Bachelor/Master in Computer Science",
+            "Bachelor/Master in Information Technology",
+            "Bachelor/Master in Software Engineering",
+            "Bachelor/Master in Accounting and finance",
+            "Bachelor/Master in Business Administration",
+            "Bachelor/Master in International Trade and Economics ",
+            "Bachelor/Master in International Economic and Finance",
+            "Bachelor of Medecine (MD)",
+            "Bachelor/Master in inPharmacy",
+            "Bachelor/Master in Radiography (Diagnostic and Therapy)",
+            "Bachelor/Master in EnvironmentalHealth and Development 4",
+            "Bachelor/Master in Nursing Science",
+            "Bachelor/Master in MedicalLaboratory Science",
+            " Bachelor/Master in Hospital Management",
+            "Bachelor/Master in Nutrition Science",
+            "Bachelor/Master in Health Care Management",
+            "Bachelor/Master in Public Health",
+            "Bachelor/Master in Health Information Management",
+            "Bachelor/Master in French",
+            "Bachelor/Master in English",
+            "Bachelor/Master in Hausa",
+            "Bachelor/Master in Animal Health and Husbandry",
+            "Bachelor/Master in law (LLB)"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "t_id": "Mi_7",
+    "name": "lnstitut Pratique de Sante Publique Ali dan sofo",
+    "openingDecree": "N°00035/MEMS/RS/SG/DGE/DL/DES/DEPRI du 30/01/2013",
+    "localisation": "Maradi",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "Diplôme d’Etat en santé"
+      },
+      "LicenceMaster": []
+    }
+  },
+  {
+    "t_id": "Mi_8",
+    "name": "lnstitut Privé des Sports, de la Jeunesse, de l’Animation et de l’Action Culturelle Zaria route de Zinder",
+    "openingDecree": "N°00107/MES/RI/SG/DGE/DL/DESP/DESPRI du 14/10/15",
+    "localisation": "Maradi",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": null
+      },
+      "LicenceMaster": []
+    }
+  },
+  {
+    "t_id": "Ta_1",
+    "name": "Institut Privé des Technologies Appliquées (IPTA) Quartier sabon gari",
+    "openingDecree": "N°000178/MESS/RT/SG/DGE/DL/DES/DEPRI du 15/10/2003 Transfert N°00261/MEMS/RS/SG/DGE/DL/DES/DEPRI du 29/11/2011",
+    "localisation": "Tahoua",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "BTS d’Etat"
+      },
+      "LicenceMaster": [
+        {
+          "autorizeDecree": "Arrêté provisoire n°0094/MES/R/I/SG/DGE/DESP/DESPRI du 15/09/15",
+          "formations": [
+            "Licence Comptabilité et Gestion des Entreprises",
+            "Licence en Administration et Gestion des Organisations ",
+            "Licence en Logistique – Transport",
+            "Licence en Gestion des Projets"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "t_id": "Ta_2",
+    "name": "Institut Privé des Nouvelles Technologies de l’Ader (IPNTA) Mabayamaré",
+    "openingDecree": "N°00177/MES/R/SG/DGE/DL/DES/DEPRI du 04/08/2011",
+    "localisation": "Tahoua",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "BTS d’Etat"
+      },
+      "LicenceMaster": [
+        {
+          "autorizeDecree": "Arrêté régularisation n°00212/MES/R/I/SG/DGE/DESP/DEPRI du 27/09/13",
+          "formations": [
+            "Licence en Comptabilité et Gestiondes Entreprises",
+            " Licence en Gestion des Projets",
+            "Licence en Logistique - Transport",
+            "Licence en Gestion des Ressources Humaines"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "t_id": "Ta_3",
+    "name": "Institut Polytechnique des Hautes Etudes Mabayamaré",
+    "openingDecree": "N°00416/MESS/RS/SG/DGE/DL/DES/DEPRI du 29/12/2010",
+    "localisation": "Tahoua",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "BTS d’Etat"
+      },
+      "LicenceMaster": []
+    }
+  },
+  {
+    "t_id": "Ta_4",
+    "name": "Institut Privé des Cadres de Santé Publique (IPCSP) Quartier sabon gari",
+    "openingDecree": "N°00196/MESS/R/T/SG/DGE/DL/DES/DEPRI du 21/10/2008",
+    "localisation": "Tahoua",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "Diplôme d’Etat en santé"
+      },
+      "LicenceMaster": [
+        {
+          "autorizeDecree": "Arrête 00196/MESS/R/T/SG/DGE/DL/DES/DEPRI du 21/10/2008",
+          "formations": [
+            "Technicien en Soins Obstétricaux (à régulariser)",
+            " Technicien de l’Action Sociale (à régulariser)",
+            "Technicien en Epidémiologie et Bio Statistique (à régulariser)"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "t_id": "Ta_5",
+    "name": "Ecole d’Administration, des Finances, des Carrières Juridiques et Economiques (EAFCJE) sabon gari En face de la brigade des douanes",
+    "openingDecree": "N°0038/MESR/I/SG/DGE/DL/DES/DESPRI du 30/3/2016",
+    "localisation": "Tahoua",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "BTS d’Etat"
+      },
+      "LicenceMaster": []
+    }
+  },
+  {
+    "t_id": "Ta_6",
+    "name": "lnstitut Supérieur en Sciences de la Santé (ISESS) Tahoua",
+    "openingDecree": "En cours",
+    "localisation": "Tahoua",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "BTS d’Etat"
+      },
+      "LicenceMaster": []
+    }
+  },
+  {
+    "t_id": "Ta_7",
+    "name": "lnstitut Pratique de Santé Publique (IPSP) à Konni",
+    "openingDecree": "N°095/MESR/I/SG/DGE/DL/DES/DESPRI du 28/08/2017",
+    "localisation": "Tahoua",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "BTS d’Etat"
+      },
+      "LicenceMaster": []
+    }
+  },
+  {
+    "t_id": "Ti_1",
+    "name": "lnstitut Supérieur Professionnels de la Santé (ISPS)",
+    "openingDecree": "N°114/MES/RI/SG/DGE/DL/DESPRI du 04/10/2017",
+    "localisation": "Tillaberi",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "BTS d’Etat"
+      },
+      "LicenceMaster": []
+    }
+  },
+  {
+    "t_id": "Ti_2",
+    "name": "Ecole Privée de Santé Tontoni (EPST) Filingué",
+    "openingDecree": "N°116/MES/R/I/SG/DGE/DL/DESPRI du 04/10/2017",
+    "localisation": "Tillaberi",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "BTS d’Etat"
+      },
+      "LicenceMaster": []
+    }
+  },
+  {
+    "t_id": "Zr_1",
+    "name": "lnstitut Britannique de Management et de Technologie (IBMT) Chare Zamna",
+    "openingDecree": "00238/MES/R/I//SG/DGE/DL/DES/DEPRI du 18/11/2013",
+    "localisation": "Zinder",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "BTS d’Etat"
+      },
+      "LicenceMaster": [
+        {
+          "autorizeDecree": "Arrêté provisoire n°0028iMES/R/I/SG/DGE/DESP/DESPRI du 09/03/16",
+          "formations": [
+            "Licence-Master en Communication Marketing (optionnel)",
+            " Licence en Gestion des Ressources Humaines",
+            "Licence en techniques comptables et financières"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "t_id": "Zr_2",
+    "name": "lnstitut Polytechnique d’Etude Supérieure (IPES) ALKALI",
+    "openingDecree": "00418/MESS/R/T/SG/DGE/DL/DES/DEPRI du 29/12/2010",
+    "localisation": "Zinder",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "BTS d’Etat"
+      },
+      "LicenceMaster": [
+        {
+          "autorizeDecree": "Arrêté provisoire n°00152/MEMS/RS/SG/DGE/DESP/DEPRI du 28/06/13",
+          "formations": [
+            "Licence en Transport —Logistique (TL)",
+            "Licence en Gestion des Ressources Humaines (GRH)",
+            " Licence en Gestion des Collectivités (GP)",
+            "Licence en Comptabilité, Contrôle et Audit (CCA)",
+            "Licence en Administration et Gestion des Organisation (AGO)",
+            "Licence en Conseiller en Administration Scolaire et Universitaire (CASU)",
+            "Licence en Communication des Entreprises (CE)",
+            "Licence en Marketing et Commerce International (MCI)",
+            "Licence et Master en Gestion des Projets (GP) ",
+            "Licence et Master en Informatique de Gestion (IG)"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "t_id": "Zr_3",
+    "name": "Ecole de Santé Publique et de l’Action Sociale (ESPAS) DJASS  zourn",
+    "openingDecree": "000013/MESS/R/T/SG/DGE/DL/DES/DEPRI du 9/1/2007",
+    "localisation": "Zinder",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "Diplôme d’Etat en santé"
+      },
+      "LicenceMaster": []
+    }
+  },
+  {
+    "t_id": "Zr_4",
+    "name": "Institut Supérieur Privé de Technologie et de Gestion a cote de l’université",
+    "openingDecree": "00118/MES/R/I//SG/DGE/DL/DES/DEPRI du 26/10/2016",
+    "localisation": "Zinder",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "BTS d’Etat"
+      },
+      "LicenceMaster": []
+    }
+  },
+  {
+    "t_id": "Zr_5",
+    "name": "lnstitut Privé de Santé  et Développement Communautaire (ISDC) kourandaga",
+    "openingDecree": "N°000147/MESS/R/T/SG/DGE/DL/DES/DEPRI du 14/09/2009",
+    "localisation": "Zinder",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "Diplôme d’Etat en santé"
+      },
+      "LicenceMaster": [
+        {
+          "autorizeDecree": "Arrêté 000147/MESS/R/T/SG/DGE/DL/DES/DEPRI du 14/09/2009 ",
+          "formations": [
+            "Technicien en Soins Obstétricaux (à régulariser)",
+            "Technicien du Développement Social (à régulariser) ",
+            "Technicien en kinésithérapie (à régulariser)",
+            "Technicien en Biologie Médicale (à régulariser)",
+            "Technicien en Nutrition (à régulariser)",
+            "Technicien en Communication en Santé (régulariser)",
+            " Technicien en épidémiologie (à régulariser)",
+            "Technicien en Management et Gestion (à régulariser)",
+            "Technicien en Santé Communautaire (à régulariser)",
+            "Délégué Médicale (à régulariser)"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "t_id": "Zr_6",
+    "name": "lnstitut Supérieur Privé de Formation Professionnelle en Technique et Pratique en Développement Rural Kaoura (ISPF K) à Matameye",
+    "openingDecree": "N°115/MES/R/ISG/DGE/DL/DESP RI du 04/10/2017",
+    "localisation": "Zinder",
+    "typeEtablissement": "privé",
+    "niveauEtude": "supérieur",
+    "servicesParaScolaire": [],
+    "program": {
+      "bts": {
+        "openingDecreeBTS": null,
+        "name": "BTS d’Etat"
+      },
+      "LicenceMaster": []
+    }
+  }
+]

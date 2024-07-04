@@ -46,10 +46,8 @@ export default function RootLayout({
             </ul>
           </div>
         </header>
-        <main className="flex-grow pt-20 pb-20">
-          <div className="container mx-auto">
-            {children}
-          </div>
+        <main className="flex-grow pt-20">
+          <div className="container mx-auto">{children}</div>
         </main>
         <footer
           className="w-full bg-white py-4 flex justify-center items-center font-bold"
