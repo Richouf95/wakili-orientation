@@ -26,28 +26,42 @@ export default function ContactUs() {
   const handleClose = () => setOpen(false);
 
   React.useEffect(() => {
-    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_USER_ID);
+    const email_js_user_id = process.env.NEXT_PUBLIC_EMAILJS_USER_ID;
+    if (email_js_user_id) {
+      emailjs.init(email_js_user_id);
+    } else {
+      console.error("NEXT_PUBLIC_EMAILJS_USER_ID is not defined");
+    }
   }, []);
 
   const handleSendMessage = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    emailjs
-      .sendForm(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-        event.target as HTMLFormElement
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          alert("Message envoyé avec succès!");
-          handleClose();
-        },
-        (error) => {
-          console.log(error.text);
-          alert("Une erreur s'est produite ! \nVeuillez renvoyer le message");
-        }
+    const email_js_service_id = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const email_js_template_id = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+
+    if (email_js_service_id && email_js_template_id) {
+      emailjs
+        .sendForm(
+          email_js_service_id,
+          email_js_template_id,
+          event.target as HTMLFormElement
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+            alert("Message envoyé avec succès!");
+            handleClose();
+          },
+          (error) => {
+            console.log(error.text);
+            alert("Une erreur s'est produite ! \nVeuillez renvoyer le message");
+          }
+        );
+    } else {
+      console.error(
+        "NEXT_PUBLIC_EMAILJS_SERVICE_ID or NEXT_PUBLIC_EMAILJS_TEMPLATE_ID is not defined"
       );
+    }
   };
 
   return (
