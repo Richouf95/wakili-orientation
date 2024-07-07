@@ -28,7 +28,7 @@ export default function AlertInfo() {
             </IconButton>
           }
           sx={{ mb: 2, bgcolor: "#F97316", textAlign: "center" }}
-          className="text-lg"
+          className="text-lg text-white"
           severity="info"
         >
           Merci de visiter notre plateforme.<br />
