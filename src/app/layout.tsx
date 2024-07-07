@@ -1,10 +1,11 @@
-"use client"
+"use client";
 
 import "./globals.css";
 import Image from "next/image";
 import logoWakili from "/public/logoWakili.png";
 import { useEffect } from "react";
-import useFilterData from '@/hooks/useFilterData';
+import useFilterData from "@/hooks/useFilterData";
+import ContactUs from "@/components/contactUs/ContactUs";
 
 const metadata = {
   title: "Orientation | Wakili Services",
@@ -17,12 +18,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
   const { filter, handleFilterChange, filteredData } = useFilterData();
 
-  useEffect(() => {
-
-  }, [filteredData])
+  useEffect(() => {}, [filteredData]);
+  console.log(process.env.NEXT_PUBLIC_EMAILJS_USER_ID)
 
   const currentDate = new Date();
   const currentYear = currentDate.getFullYear();
@@ -43,21 +42,10 @@ export default function RootLayout({
             <div className="flex-shrink-0">
               <Image src={logoWakili} alt="Logo Wakili" width={150} />
             </div>
-            <ul className="flex gap-5 flex-wrap">
-              <li>
-                <button className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-5 rounded-full">
-                  Hehe
-                </button>
-              </li>
-              <li>
-                <button className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-5 rounded-full">
-                  Hehe
-                </button>
-              </li>
-            </ul>
+            <ContactUs />
           </div>
         </header>
-        <main className="flex-grow pt-20">
+        <main className="flex-grow mt-28">
           <div className="container mx-auto">{children}</div>
         </main>
         <footer
@@ -69,6 +57,15 @@ export default function RootLayout({
         >
           Wakili Services | {currentYear}
         </footer>
+
+        {/* <script
+          type="text/javascript"
+          src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+        ></script>
+
+        <script type="text/javascript">
+          emailjs.init('NEu9qt_3u6R_y0u7u')
+        </script> */}
       </body>
     </html>
   );

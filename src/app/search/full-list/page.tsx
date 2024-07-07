@@ -124,7 +124,7 @@ function SearchFullList() {
   };
 
   return (
-    <div className="mt-10 px-4">
+    <div className="px-4">
       <div className="bg-gray-100 p-6 rounded-lg shadow-lg mb-8 max-w-4xl mx-auto">
         <h2 className="text-2xl font-bold mb-4 text-center">
           Rechercher des Écoles
