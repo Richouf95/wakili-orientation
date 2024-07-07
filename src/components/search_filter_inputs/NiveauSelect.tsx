@@ -6,7 +6,7 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 interface NiveauProps {
   niveauEtude: string;
-  setNiveauEtude: React.Dispatch<React.SetStateAction<string>>;
+  setNiveauEtude: (value: string) => void;
 }
 
 const NiveauSelect: React.FC<NiveauProps> = ({

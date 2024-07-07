@@ -7,7 +7,7 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 interface TypeEtablissementProps {
   typeEtablissement: string;
-  setTypeEtablissement: React.Dispatch<React.SetStateAction<string>>;
+  setTypeEtablissement: (value: string) => void;
 }
 
 const TypeEtablissementSelect: React.FC<TypeEtablissementProps> = ({

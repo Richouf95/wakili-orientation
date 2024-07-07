@@ -23,6 +23,10 @@ interface FilterState {
   servicesParaScolaire: string[];
 }
 
+interface GroupedFormationsType {
+  [key: string]: string[];
+}
+
 function SearchFullList() {
   const [data, setData] = useState<any>(allSchoolData);
   const [filterData, setFilterData] = useState<any>(allSchoolData);
@@ -100,7 +104,9 @@ function SearchFullList() {
     const { formation } = filterState;
     if (formation.trim() === "") return filteredData;
 
-    const selectedFormations = groupedFormations[formation] || [];
+    const fomationsList: GroupedFormationsType = groupedFormations;
+
+    const selectedFormations: string[] = fomationsList[formation] || [];
 
     return filteredData.filter((school: any) =>
       school.program.LicenceMaster.some((element: any) =>

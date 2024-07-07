@@ -8,7 +8,7 @@ import ListSubheader from "@mui/material/ListSubheader";
 
 interface FormationProps {
   formation: string;
-  setFormation: React.Dispatch<React.SetStateAction<string>>;
+  setFormation: (value: string) => void;
 }
 
 const FormationSelect: React.FC<FormationProps> = ({

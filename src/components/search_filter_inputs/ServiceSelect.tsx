@@ -30,7 +30,7 @@ function getStyles(service: string, servicesParaScolaire: readonly string[], the
 
 interface ServicesParaScolaireSelectProps {
   servicesParaScolaire: string[];
-  setServicesParaScolaire: React.Dispatch<React.SetStateAction<string[]>>;
+  setServicesParaScolaire: (value: string[]) => void;
 }
 
 const ServicesParaScolaireSelect: React.FC<ServicesParaScolaireSelectProps> = ({

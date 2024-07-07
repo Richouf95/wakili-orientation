@@ -7,7 +7,7 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 interface LocalisationProps {
   localisation: string;
-  setLocalisation: React.Dispatch<React.SetStateAction<string>>;
+  setLocalisation: (value: string) => void;
 }
 
 const LocalisationSelect: React.FC<LocalisationProps> = ({
