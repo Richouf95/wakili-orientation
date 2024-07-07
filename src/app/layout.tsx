@@ -29,7 +29,10 @@ export default function RootLayout({
         <meta property="og:type" content="website" />
 
         {/* <!-- URL canonique de la page --> */}
-        <meta property="og:url" content="https://wakili-orientation.vercel.app/" />
+        <meta
+          property="og:url"
+          content="https://wakili-orientation.vercel.app/"
+        />
 
         {/* <!-- Description de la page --> */}
         <meta

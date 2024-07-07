@@ -13,6 +13,7 @@ import FormationSelect from "@/components/search_filter_inputs/FomationSelect";
 import ResultTable from "@/components/ResultTable/ResultTable";
 import allSchoolData from "@/data/allData";
 import { groupedFormations } from "@/data/listeFromation";
+import AlertInfo from "@/components/AlertInfo";
 
 interface FilterState {
   nomEtablissement: string;
@@ -131,6 +132,9 @@ function SearchFullList() {
 
   return (
     <div className="px-4">
+      <div className="fixed bottom-0">
+        <AlertInfo />
+      </div>
       <div className="bg-gray-100 p-6 rounded-lg shadow-lg mb-8 max-w-4xl mx-auto">
         <h2 className="text-2xl font-bold mb-4 text-center">
           Rechercher des Écoles
