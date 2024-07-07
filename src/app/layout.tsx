@@ -1,5 +1,3 @@
-"use client";
-
 import "./globals.css";
 import Image from "next/image";
 import logoWakili from "/public/logoWakili.png";
@@ -7,7 +5,7 @@ import { useEffect } from "react";
 import useFilterData from "@/hooks/useFilterData";
 import ContactUs from "@/components/contactUs/ContactUs";
 
-const metadata = {
+export const metadata = {
   title: "Orientation | Wakili Services",
   description:
     "Trouvez des informations complètes et à jour sur les établissements d'enseignement au Niger, y compris les écoles, collèges, lycées et universités. Facilitez votre recherche d'établissements éducatifs avec Wakili Services",
@@ -18,17 +16,41 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { filter, handleFilterChange, filteredData } = useFilterData();
-
-  useEffect(() => {}, [filteredData]);
-  console.log(process.env.NEXT_PUBLIC_EMAILJS_USER_ID)
-
   const currentDate = new Date();
   const currentYear = currentDate.getFullYear();
   return (
     <html lang="fr">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {/* <!-- Titre du site ou de la page --> */}
+        <meta property="og:title" content="Orientation | Wakili Services" />
+
+        {/* <!-- Type de contenu (article, website, video, etc.) --> */}
+        <meta property="og:type" content="website" />
+
+        {/* <!-- URL canonique de la page --> */}
+        <meta property="og:url" content="https://wakili-orientation.vercel.app/" />
+
+        {/* <!-- Description de la page --> */}
+        <meta
+          property="og:description"
+          content="Trouvez l'établissement qui vous convient"
+        />
+
+        {/* <!-- URL de l'image à afficher dans l'aperçu --> */}
+        <meta
+          property="og:image"
+          content="https://github.com/Richouf95/wakili-orientation/blob/main/public/logoWakiliWithBg.jpg?raw=true"
+        />
+
+        {/* <!-- Nom de votre site --> */}
+        <meta property="og:site_name" content="Orientation | Wakili Services" />
+
+        {/* <!-- (Optionnel) Auteur du contenu --> */}
+        <meta property="og:author" content="Wouri Chouf" />
+
+        {/* <!-- (Optionnel) Langue du contenu --> */}
+        <meta property="og:locale" content="fr_FR" />
       </head>
       <body className="flex flex-col min-h-screen">
         <header
@@ -57,15 +79,6 @@ export default function RootLayout({
         >
           Wakili Services | {currentYear}
         </footer>
-
-        {/* <script
-          type="text/javascript"
-          src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
-        ></script>
-
-        <script type="text/javascript">
-          emailjs.init('NEu9qt_3u6R_y0u7u')
-        </script> */}
       </body>
     </html>
   );

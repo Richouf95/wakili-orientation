@@ -78,22 +78,22 @@ export default function ContactUs() {
           stroke="#bb2525"
           width={30}
         >
-          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
           <g
             id="SVGRepo_tracerCarrier"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             stroke="#CCCCCC"
-            stroke-width="0.192"
+            strokeWidth="0.192"
           ></g>
           <g id="SVGRepo_iconCarrier">
             {" "}
             <path
               d="M4 7.00005L10.2 11.65C11.2667 12.45 12.7333 12.45 13.8 11.65L20 7"
               stroke="#000000"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             ></path>{" "}
             <rect
               x="3"
@@ -102,8 +102,8 @@ export default function ContactUs() {
               height="14"
               rx="2"
               stroke="#000000"
-              stroke-width="2"
-              stroke-linecap="round"
+              strokeWidth="2"
+              strokeLinecap="round"
             ></rect>{" "}
           </g>
         </svg>
