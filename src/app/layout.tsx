@@ -1,8 +1,12 @@
+"use client"
+
 import "./globals.css";
 import Image from "next/image";
 import logoWakili from "/public/logoWakili.png";
+import { useEffect } from "react";
+import useFilterData from '@/hooks/useFilterData';
 
-export const metadata = {
+const metadata = {
   title: "Orientation | Wakili Services",
   description:
     "Trouvez des informations complètes et à jour sur les établissements d'enseignement au Niger, y compris les écoles, collèges, lycées et universités. Facilitez votre recherche d'établissements éducatifs avec Wakili Services",
@@ -13,6 +17,13 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
+  const { filter, handleFilterChange, filteredData } = useFilterData();
+
+  useEffect(() => {
+
+  }, [filteredData])
+
   const currentDate = new Date();
   const currentYear = currentDate.getFullYear();
   return (

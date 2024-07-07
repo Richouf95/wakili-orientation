@@ -31,7 +31,7 @@ const NiveauSelect: React.FC<NiveauProps> = ({
         <MenuItem value={"École primaire"}>École primaire</MenuItem>
         <MenuItem value={"Collège"}>Collège</MenuItem>
         <MenuItem value={"Lycée"}>Lycée</MenuItem>
-        <MenuItem value={"Université"}>Université</MenuItem>
+        <MenuItem value={"Supérieur"}>Supérieur</MenuItem>
         <MenuItem value={"Centre de formation"}>Centre de formation</MenuItem>
       </Select>
     </FormControl>

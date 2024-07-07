@@ -740,7 +740,25 @@ const allSchoolData = [
   }
 ]
 
+let listeDesBTS = [];
+let listeDesLM = [];
 
-console.log(allSchoolData.length)
+allSchoolData.map(i => {
+  if (i.program.bts.name != null) { listeDesBTS.push(i.program.bts.name) }
+
+  const LM = i.program.LicenceMaster
+  if (LM.length > 0) {
+    LM.map(x => {
+      const listFormationLM = x.formations;
+      listeDesLM = [...listeDesLM, ...listFormationLM];
+    })
+  }
+})
+
+const fullList = [...listeDesBTS, ...listeDesLM];
+
+const uniqueItems = [...new Set(fullList)]
+
+
 
 export default allSchoolData;

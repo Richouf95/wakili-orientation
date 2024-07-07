@@ -11,66 +11,142 @@ import LocalisationSelect from "@/components/search_filter_inputs/LocalisationSe
 import TypeSelect from "@/components/search_filter_inputs/TypeSelect";
 import FormationSelect from "@/components/search_filter_inputs/FomationSelect";
 import ResultTable from "@/components/ResultTable/ResultTable";
-import allSchoolData from "@/data/allData"
+import allSchoolData from "@/data/allData";
+import { groupedFormations } from "@/data/listeFromation";
 
-
-import School from "@/data/schoolModel";
+interface FilterState {
+  nomEtablissement: string;
+  formation: string;
+  niveauEtude: string;
+  localisation: string;
+  typeEtablissement: string;
+  servicesParaScolaire: string[];
+}
 
 function SearchFullList() {
+  const [data, setData] = useState<any>(allSchoolData);
+  const [filterData, setFilterData] = useState<any>(allSchoolData);
+  const [filterState, setFilterState] = useState<FilterState>({
+    nomEtablissement: "",
+    formation: "",
+    niveauEtude: "",
+    localisation: "",
+    typeEtablissement: "",
+    servicesParaScolaire: [],
+  });
 
-  const [data, setData] = useState<any>([]);
+  useEffect(() => {}, [filterState]);
 
-  const [nomEtablissement, setNomEtablissement] = useState("");
-  const [formation, setFormation] = useState("");
-  const [niveauEtude, setNiveauEtude] = useState("");
-  const [localisation, setLocalisation] = useState("");
-  const [typeEtablissement, setTypeEtablissement] = useState("");
-  const [servicesParaScolaire, setServicesParaScolaire] = useState<string[]>(
-    []
-  );
-  const [searchData, setSearchData] = useState({});
+  const applyFilters = () => {
+    let filteredData = [...data];
 
-  useEffect(() => {
-    setData(allSchoolData);
-  }, [])
+    filteredData = applyNameFilter(filteredData);
+    filteredData = applyNiveauEtudeFilter(filteredData);
+    filteredData = applyLocalisationFilter(filteredData);
+    filteredData = applyTypeEtablissementFilter(filteredData);
+    filteredData = applyServicesParaScolaireFilter(filteredData);
+    filteredData = applyFormationFilter(filteredData);
+
+    setFilterData(filteredData);
+  };
+
+  const applyNameFilter = (filteredData: any[]) => {
+    const { nomEtablissement } = filterState;
+    if (nomEtablissement.trim() === "") return filteredData;
+    const nameTag = nomEtablissement.toLowerCase();
+    return filteredData.filter((school: any) =>
+      school.name.toLowerCase().includes(nameTag)
+    );
+  };
+
+  const applyNiveauEtudeFilter = (filteredData: any[]) => {
+    const { niveauEtude } = filterState;
+    if (niveauEtude.trim() === "") return filteredData;
+    const niveauEtudeTag = niveauEtude.toLowerCase();
+    return filteredData.filter((school: any) =>
+      school.niveauEtude.toLowerCase().includes(niveauEtudeTag)
+    );
+  };
+
+  const applyLocalisationFilter = (filteredData: any[]) => {
+    const { localisation } = filterState;
+    if (localisation.trim() === "") return filteredData;
+    const localisationTag = localisation.toLowerCase();
+    return filteredData.filter((school: any) =>
+      school.localisation.toLowerCase().includes(localisationTag)
+    );
+  };
+
+  const applyTypeEtablissementFilter = (filteredData: any[]) => {
+    const { typeEtablissement } = filterState;
+    if (typeEtablissement.trim() === "") return filteredData;
+    const typeEtablissementTag = typeEtablissement.toLowerCase();
+    return filteredData.filter((school: any) =>
+      school.typeEtablissement.toLowerCase().includes(typeEtablissementTag)
+    );
+  };
+
+  const applyServicesParaScolaireFilter = (filteredData: any[]) => {
+    const { servicesParaScolaire } = filterState;
+    if (servicesParaScolaire.length === 0) return filteredData;
+    return filteredData.filter((school: any) =>
+      servicesParaScolaire.every((service: string) =>
+        school.servicesParaScolaire.includes(service)
+      )
+    );
+  };
+
+  const applyFormationFilter = (filteredData: any[]) => {
+    const { formation } = filterState;
+    if (formation.trim() === "") return filteredData;
+
+    const selectedFormations = groupedFormations[formation] || [];
+
+    return filteredData.filter((school: any) =>
+      school.program.LicenceMaster.some((element: any) =>
+        element.formations.some((formation: string) =>
+          selectedFormations.includes(formation)
+        )
+      )
+    );
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const searchTags = {
-      nomEtablissement,
-      formation,
-      niveauEtude,
-      localisation,
-      typeEtablissement,
-      servicesParaScolaire,
-    };
-    setSearchData(searchTags);
-    console.log("Search Tags:", searchTags);
+    applyFilters();
   };
 
-  const s1 = new School("Example School1");
-  const s2 = new School("Example School2");
-  const s3 = new School("Example School3");
-
-  // console.log(s1, s2, s3);
+  const handleFilterChange = (newFilterState: Partial<FilterState>) => {
+    setFilterState((prevFilterState) => ({
+      ...prevFilterState,
+      ...newFilterState,
+    }));
+  };
 
   return (
     <div className="mt-10 px-4">
       <div className="bg-gray-100 p-6 rounded-lg shadow-lg mb-8 max-w-4xl mx-auto">
-        <h2 className="text-2xl font-bold mb-4 text-center">Rechercher des Écoles</h2>
+        <h2 className="text-2xl font-bold mb-4 text-center">
+          Rechercher des Écoles
+        </h2>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <Box sx={{ width: 1 }}>
             <TextField
               fullWidth
               label="Nom de l'établissement"
               id="nomEtablissement"
-              onChange={(e) => setNomEtablissement(e.target.value)}
+              value={filterState.nomEtablissement}
+              onChange={(e) =>
+                handleFilterChange({ nomEtablissement: e.target.value })
+              }
             />
           </Box>
           <Box sx={{ width: 1 }}>
             <FormationSelect
-              formation={formation}
-              setFormation={setFormation}
+              formation={filterState.formation}
+              setFormation={(value: string) =>
+                handleFilterChange({ formation: value })
+              }
             />
           </Box>
           <Stack
@@ -80,12 +156,16 @@ function SearchFullList() {
             className="flex justify-center"
           >
             <NiveauSelect
-              niveauEtude={niveauEtude}
-              setNiveauEtude={setNiveauEtude}
+              niveauEtude={filterState.niveauEtude}
+              setNiveauEtude={(value: string) =>
+                handleFilterChange({ niveauEtude: value })
+              }
             />
             <LocalisationSelect
-              localisation={localisation}
-              setLocalisation={setLocalisation}
+              localisation={filterState.localisation}
+              setLocalisation={(value: string) =>
+                handleFilterChange({ localisation: value })
+              }
             />
           </Stack>
           <Stack
@@ -95,12 +175,16 @@ function SearchFullList() {
             className="flex justify-center"
           >
             <TypeSelect
-              typeEtablissement={typeEtablissement}
-              setTypeEtablissement={setTypeEtablissement}
+              typeEtablissement={filterState.typeEtablissement}
+              setTypeEtablissement={(value: string) =>
+                handleFilterChange({ typeEtablissement: value })
+              }
             />
             <ServiceSelect
-              servicesParaScolaire={servicesParaScolaire}
-              setServicesParaScolaire={setServicesParaScolaire}
+              servicesParaScolaire={filterState.servicesParaScolaire}
+              setServicesParaScolaire={(value: string[]) =>
+                handleFilterChange({ servicesParaScolaire: value })
+              }
             />
           </Stack>
 
@@ -115,7 +199,7 @@ function SearchFullList() {
         </form>
       </div>
 
-        <ResultTable data={data} />
+      <ResultTable data={filterData} />
     </div>
   );
 }

@@ -3,6 +3,8 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { groupedFormations } from "@/data/listeFromation";
+import ListSubheader from "@mui/material/ListSubheader";
 
 interface FormationProps {
   formation: string;
@@ -13,6 +15,16 @@ const FormationSelect: React.FC<FormationProps> = ({
   formation,
   setFormation,
 }) => {
+  const [listCategory, setListCategory] = React.useState<string[]>([]);
+
+  React.useEffect(() => {
+    let catList: string[] = [];
+    Object.keys(groupedFormations).forEach((category) => {
+      catList.push(category);
+    });
+    setListCategory(catList);
+  }, []);
+
   const handleChange = (event: SelectChangeEvent) => {
     setFormation(event.target.value);
   };
@@ -27,14 +39,13 @@ const FormationSelect: React.FC<FormationProps> = ({
         onChange={handleChange}
         label="Formation"
       >
-        <MenuItem value={"Finance"}>Finance</MenuItem>
-        <MenuItem value={"Commerce"}>Commerce</MenuItem>
-        <MenuItem value={"Médecine"}>Médecine</MenuItem>
-        <MenuItem value={"Droit"}>Droit</MenuItem>
-        <MenuItem value={"Education"}>Education</MenuItem>
-        <MenuItem value={"Logistique"}>Logistique</MenuItem>
-        <MenuItem value={"Administration"}>Administration</MenuItem>
-        <MenuItem value={"Informatique"}>Informatique</MenuItem>
+        {listCategory.map((i, index) => {
+          return (
+            <MenuItem key={`formationCategori${index}`} value={i}>
+              {i}
+            </MenuItem>
+          );
+        })}
       </Select>
     </FormControl>
   );

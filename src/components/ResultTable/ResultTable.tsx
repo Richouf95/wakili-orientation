@@ -1,14 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import FormationTableRow from "./FormationTableRow";
+// import useFilterData from '@/hooks/useFilterData';
 
-const itemsPerPage = 5;
+const itemsPerPage = 10;
 
 const ResultTable = ({ data }: any) => {
+
+  // const { filter, handleFilterChange, filteredData } = useFilterData(data);
+
+  const [filteredData, setFilteredData] = useState([])
+
+  useEffect(() => {
+    setFilteredData(data)
+  }, [data])
+
+
+
   const [currentPage, setCurrentPage] = useState(0);
-  const paginatedData = data.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
-  const totalPages = Math.ceil(data.length / itemsPerPage);
+  const paginatedData = filteredData.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
+  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
 
   const handlePreviousPage = () => {
     if (currentPage > 0) {
