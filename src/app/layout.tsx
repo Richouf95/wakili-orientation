@@ -4,6 +4,7 @@ import logoWakili from "/public/logoWakili.png";
 import { useEffect } from "react";
 import useFilterData from "@/hooks/useFilterData";
 import ContactUs from "@/components/contactUs/ContactUs";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = {
   title: "Orientation | Wakili Services",
@@ -72,6 +73,7 @@ export default function RootLayout({
         </header>
         <main className="flex-grow mt-28">
           <div className="container mx-auto">{children}</div>
+          <Analytics />
         </main>
         <footer
           className="w-full bg-white py-4 flex justify-center items-center font-bold"
