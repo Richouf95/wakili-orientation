@@ -28,9 +28,7 @@ function BtnSearch() {
 
   return (
     <div
-      className={`fixed bottom-${
-        bottomMargin === 16 ? bottomMargin : 10
-      } right-5`}
+      className={`fixed bottom-14 right-5`}
     >
       <Link href={"/search"}>
         <button className="bg-[#ea8c48] rounded-full p-2">
