@@ -3387,8 +3387,4 @@ const fullList = [...listeDesBTS, ...listeDesLM];
 
 const uniqueItems = [...new Set(fullList)]
 
-
-console.log(uniqueItems)
-
-
 export default allSchoolData;

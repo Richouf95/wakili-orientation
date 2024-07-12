@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Alert from "@mui/material/Alert";
 import IconButton from "@mui/material/IconButton";
@@ -6,8 +7,38 @@ import Collapse from "@mui/material/Collapse";
 import Button from "@mui/material/Button";
 import CloseIcon from "@mui/icons-material/Close";
 
-export default function AlertInfo() {
-  const [open, setOpen] = React.useState(true);
+interface AlertInfoProps {
+  searchEvent: boolean
+}
+
+const AlertInfo: React.FC<AlertInfoProps> = ({searchEvent}) => {
+  const [open, setOpen] = React.useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [middleWayScroll, setMiddleWayScroll] = useState(false);
+
+  const handleScroll = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    setScrollPosition(scrollPercent);
+
+    if (scrollPercent >= 50) {
+      setMiddleWayScroll(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (middleWayScroll && searchEvent) {
+      setOpen(true)
+    }
+  }, [middleWayScroll, searchEvent])
 
   return (
     <Box
@@ -32,10 +63,12 @@ export default function AlertInfo() {
           severity="info"
         >
           Merci de visiter notre plateforme.<br />
-          Nous ajoutons constamment de nouvelles écoles. <br />
+          Nous ajoutons continuellement de nouvelles écoles. <br />
           Revenez bientôt pour des mises à jour !
         </Alert>
       </Collapse>
     </Box>
   );
 }
+
+export default AlertInfo;

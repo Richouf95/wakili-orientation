@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import useFilterData from "@/hooks/useFilterData";
 import ContactUs from "@/components/contactUs/ContactUs";
 import { Analytics } from "@vercel/analytics/react";
+import Link from "next/link";
 
 export const metadata = {
   title: "Orientation | Wakili Services",
@@ -66,7 +67,7 @@ export default function RootLayout({
         >
           <div className="container mx-auto flex justify-between items-center px-4 py-2">
             <div className="flex-shrink-0">
-              <Image src={logoWakili} alt="Logo Wakili" width={150} />
+              <Link href={"/"}><Image src={logoWakili} alt="Logo Wakili" width={150} /></Link>
             </div>
             <ContactUs />
           </div>
