@@ -1,30 +1,29 @@
 import Image from "next/image";
-import logoWidthBackGround from "/public/logoWakiliWithBg.jpg";
 import Link from "next/link";
+import landingImage from "/public/images/Group171.png";
 
 function Welcome() {
   return (
-    <div className="p-5 sm:p-0 mt-7">
-      <div className="bg-[#505958] p-10 rounded-3xl sm:w-11/12 sm:m-auto md:w-10/12 md:max-w-2xl">
-        <h1 className="text-3xl font-bold text-white text-center">
-          Bienvenue sur Votre plateforme d'Orientation
-        </h1>
-        <div className="flex justify-center py-10">
-          <Image
-            src={logoWidthBackGround}
-            alt="logo Wikili Service"
-            className="rounded-2xl"
-          />
-        </div>
+    <div className="constaine md:w-3/4 m-auto">
+      <div>
+        <h2 className="text-3xl text-center font-bold text-orange-400 p-2 md:w-4/5 m-auto">
+          Découvrez et comparez les écoles de Niger en un seul endroit !
+        </h2>
         <div className="flex justify-center">
-          <Link
-            href="/introduction"
-            className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-5 rounded-full"
-          >
-            Démarrer
+          <Image src={landingImage} alt="LandingImage" width={500} height={400} />
+        </div>
+        <p className="text-lg my-5 md:w-3/5 px-5 m-auto text-center">
+          Nous sommes là pour vous aider à trouver l'école qui correspond au
+          mieux à vos attentes et aspirations académiques.
+        </p>
+      </div>
+      <div className="flex justify-center">
+          <Link href="/search">
+            <button className="my-5 px-10 py-3 bg-orange-400 btn hover:bg-orange-500 text-white font-bold rounded-full">
+              Voir la Liste Complète
+            </button>
           </Link>
         </div>
-      </div>
     </div>
   );
 }
