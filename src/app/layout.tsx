@@ -67,7 +67,7 @@ export default function RootLayout({
         >
           <div className="container mx-auto flex justify-between items-center px-4 py-2">
             <div className="flex-shrink-0">
-              <Link href={"/"}><Image src={logoWakili} alt="Logo Wakili" width={150} /></Link>
+              <Link href={"/"}><Image src={logoWakili} alt="Logo Wakili" className="w-20 sm:w-24 md:w-32"/></Link>
             </div>
             <ContactUs />
           </div>

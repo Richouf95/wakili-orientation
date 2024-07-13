@@ -42,7 +42,7 @@ const FormationSelect: React.FC<FormationProps> = ({
         {listCategory.map((i, index) => {
           return (
             <MenuItem key={`formationCategori${index}`} value={i}>
-              {i}
+              <span className="text-wrap">{i}</span>
             </MenuItem>
           );
         })}

@@ -82,7 +82,7 @@ export default function Scool({ params }: { params: { schoolId: string } }) {
           )}
         </div>
 
-        <div className="col-span-12 md:col-span-6 shadow-lg rounded-lg p-5">
+        <div className="col-span-12 md:col-span-6 shadow-lg rounded-lg p-2">
           {thisSchool ? (
             <SimpleMap schoolLocation={thisSchool.localisation} />
           ) : (

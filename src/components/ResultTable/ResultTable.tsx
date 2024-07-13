@@ -36,19 +36,22 @@ const ResultTable = ({ data }: any) => {
   };
 
   const tableData = paginatedData.map((item: any, index: any) => {
+
+    let {niveauEtude, typeEtablissement} = item;
+
     return (
       <tr key={index} className="border-b border-gray-200 hover:bg-gray-100">
         <td className="px-6 py-4 max-w-xs break-words overflow-hidden text-ellipsis">
           {item.name}
         </td>
         <td className="px-6 py-4 max-w-xs break-words overflow-hidden text-ellipsis text-center">
-          {item.niveauEtude}
+          {niveauEtude.charAt(0).toUpperCase() + niveauEtude.slice(1)}
         </td>
         <td className="px-6 py-4 max-w-xs break-words overflow-hidden text-ellipsis text-center">
           {item.localisation}
         </td>
         <td className="px-6 py-4 max-w-xs break-words overflow-hidden text-ellipsis text-center">
-          {item.typeEtablissement}
+          {typeEtablissement.charAt(0).toUpperCase() + typeEtablissement.slice(1)}
         </td>
         <td className="py-3 px-6 text-center">
           <Link href={`/school/${item.t_id}`}>

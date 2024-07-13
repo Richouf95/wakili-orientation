@@ -143,18 +143,12 @@ export default function ContactUs() {
               />
             </div>
             <div className="my-5">
-              <label
-                htmlFor="user_status"
-                className="block mb-2 ml-5 text-sm font-medium text-gray-900"
-              >
-                Veuillez indiquer votre statut
-              </label>
               <select
                 name="user_status"
                 id="user_status"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                className="bg-gray-50 border border-gray-900 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               >
-                <option>None</option>
+                <option>Sélectionnez votre statut</option>
                 <option>Elève / Etudiant</option>
                 <option>Ecole / institut / Université</option>
                 <option>Autre</option>
@@ -200,7 +194,8 @@ export default function ContactUs() {
                 id="message"
                 placeholder="Ecrivez votre message ici"
                 rows={4}
-                className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                required
+                className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-900 focus:ring-blue-500 focus:border-blue-500"
               ></textarea>
             </div>
             <div className="flex justify-center">
