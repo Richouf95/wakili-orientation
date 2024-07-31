@@ -1,0 +1,113 @@
+/* public/styles/ckeditor.css */
+.ck-content {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ck-content h1 {
+  font-size: 2em;
+}
+
+.ck-content h2 {
+  font-size: 1.5em;
+}
+
+.ck-content h3 {
+  font-size: 1.17em;
+}
+
+.ck-content h4 {
+  font-size: 1em;
+}
+
+.ck-content h5 {
+  font-size: 0.83em;
+}
+
+.ck-content h6 {
+  font-size: 0.75em;
+}
+
+.ck-content ul,
+.ck-content ol {
+  padding-left: 40px;
+}
+
+.ck-content ul li,
+.ck-content ol li {
+  list-style: disc;
+}
+
+.ck-content table {
+  border-collapse: collapse;
+  margin: auto; /* Centre le tableau horizontalement */
+  border: 1px solid #ccc;
+  width: auto; /* Ajuste la largeur du tableau pour qu'il ne prenne pas toute la largeur du conteneur */
+}
+
+.ck-content table th,
+.ck-content table td {
+  padding: 8px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.ck-content table th {
+  background-color: #f2f2f2;
+}
+
+.ck-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1em 0;
+}
+
+.ck-content blockquote {
+  margin: 1em 40px;
+  padding: 0.5em 10px;
+  border-left: 3px solid #ccc;
+  color: #666;
+  font-style: italic;
+}
+
+.ck-content pre {
+  background: #f4f4f4;
+  padding: 10px;
+  overflow: auto;
+  border-radius: 5px;
+}
+
+.ck-content code {
+  background: #f4f4f4;
+  padding: 3px 5px;
+  border-radius: 3px;
+}
+
+.ck-content a {
+  color: #0645ad;
+  text-decoration: none;
+}
+
+.ck-content a:hover {
+  text-decoration: underline;
+}
+
+.ck-content hr {
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+}
+
+.ck-content strong {
+  font-weight: bold;
+}
+
+.ck-content em {
+  font-style: italic;
+}

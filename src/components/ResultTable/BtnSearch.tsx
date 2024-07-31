@@ -28,7 +28,7 @@ function BtnSearch() {
 
   return (
     <div
-      className={`fixed bottom-14 right-5`}
+      className={`fixed bottom-16 right-5 z-10`}
     >
       <Link href={"/search"}>
         <button className="bg-[#ea8c48] rounded-full p-2">

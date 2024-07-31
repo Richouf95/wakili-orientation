@@ -22,14 +22,14 @@ const LocalisationSelect: React.FC<LocalisationProps> = ({
   return (
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-autowidth-label">
-           Localisation
+           Région
         </InputLabel>
         <Select
           labelId="demo-simple-select-autowidth-label"
           id="localisation"
           value={localisation}
           onChange={handleChange}
-          label="Type d'École Localisation"
+          label="Région"
         >
           <MenuItem value={"Agadez"}>Agadez</MenuItem>
                   <MenuItem value={"Diffa"}>Diffa</MenuItem>

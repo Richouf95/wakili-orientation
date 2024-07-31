@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import ServiceSelect from "@/components/search_filter_inputs/ServiceSelect";
 import * as React from "react";
 import Box from "@mui/material/Box";
@@ -11,9 +11,10 @@ import LocalisationSelect from "@/components/search_filter_inputs/LocalisationSe
 import TypeSelect from "@/components/search_filter_inputs/TypeSelect";
 import FormationSelect from "@/components/search_filter_inputs/FomationSelect";
 import ResultTable from "@/components/ResultTable/ResultTable";
-import allSchoolData from "@/data/allData";
-import { groupedFormations } from "@/data/listeFromation";
 import AlertInfo from "@/components/AlertInfo";
+import ReinitIcon from "/public/images/icon_reinit.png";
+import Image from "next/image";
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
 
 interface FilterState {
   nomEtablissement: string;
@@ -28,9 +29,104 @@ interface GroupedFormationsType {
   [key: string]: string[];
 }
 
+function useFilteredData(data: any[], filterState: any) {
+  const [filteredData, setFilteredData] = useState<any[]>(data);
+
+  useEffect(() => {
+    const applyFilters = async () => {
+      let filteredData = [...data];
+
+      const applyNameFilter = () => {
+        const { nomEtablissement } = filterState;
+        if (nomEtablissement.trim() === "") return;
+        const nameTag = nomEtablissement.toLowerCase();
+        filteredData = filteredData.filter((school) =>
+          school.name.toLowerCase().includes(nameTag)
+        );
+      };
+
+      const applyNiveauEtudeFilter = () => {
+        const { niveauEtude } = filterState;
+        if (niveauEtude.trim() === "") return;
+        const niveauEtudeTag = niveauEtude.toLowerCase();
+        filteredData = filteredData.filter((school) =>
+          school.niveauEtude.some((schoolNiveau: string) =>
+            schoolNiveau.toLowerCase().includes(niveauEtudeTag)
+          )
+        );
+      };
+
+      const applyLocalisationFilter = () => {
+        const { localisation } = filterState;
+        if (localisation.trim() === "") return;
+        const localisationTag = localisation.toLowerCase();
+        filteredData = filteredData.filter((school) =>
+          school.localisation.toLowerCase().includes(localisationTag)
+        );
+      };
+
+      const applyTypeEtablissementFilter = () => {
+        const { typeEtablissement } = filterState;
+        if (typeEtablissement.trim() === "") return;
+        const typeEtablissementTag = typeEtablissement.toLowerCase();
+        filteredData = filteredData.filter((school) =>
+          school.typeEtablissement.toLowerCase().includes(typeEtablissementTag)
+        );
+      };
+
+      const applyServicesParaScolaireFilter = () => {
+        const { servicesParaScolaire } = filterState;
+        if (servicesParaScolaire.length === 0) return;
+        filteredData = filteredData.filter((school) =>
+          servicesParaScolaire.every((service: any) =>
+            school.servicesParaScolaire.includes(service)
+          )
+        );
+      };
+
+      const applyFormationFilter = async () => {
+        const { formation } = filterState;
+        if (!formation || !formation._id) return;
+
+        try {
+          const response = await fetch(
+            `${process.env.NEXT_PUBLIC_API_DOMAIN}/programs/domaine/${formation._id}`
+          );
+
+          if (!response.ok) {
+            console.error("Error fetching formation data");
+            filteredData = [];
+            return;
+          }
+
+          const result = await response.json();
+          const schoolIds = result.map((program: any) => program.school);
+          filteredData = filteredData.filter((school) =>
+            schoolIds.includes(school._id)
+          );
+        } catch (error) {
+          console.error("Error fetching formation data", error);
+        }
+      };
+
+      applyNameFilter();
+      applyNiveauEtudeFilter();
+      applyLocalisationFilter();
+      applyTypeEtablissementFilter();
+      applyServicesParaScolaireFilter();
+      await applyFormationFilter();
+
+      setFilteredData(filteredData);
+    };
+
+    applyFilters();
+  }, [data, filterState]);
+
+  return filteredData;
+}
+
 function SearchFullList() {
-  const [data, setData] = useState<any>(allSchoolData);
-  const [filterData, setFilterData] = useState<any>(allSchoolData);
+  const [data, setData] = useState<any[]>([]);
   const [filterState, setFilterState] = useState<FilterState>({
     nomEtablissement: "",
     formation: "",
@@ -40,89 +136,47 @@ function SearchFullList() {
     servicesParaScolaire: [],
   });
   const [searchEvent, setSearcheEvent] = useState(false);
+  const [isFormVisible, setIsFormVisible] = useState(false);
 
-  useEffect(() => {}, [filterState]);
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/school/all-schools`)
+      .then((response) => response.json())
+      .then((result) => {
+        const published = result.filter((x: any) => x.publishStatus === true)
+        console.log(result.length)
+        console.log(published.length)
+        const shuffledData = shuffleArray(published);
+        setData(shuffledData);
+      })
+      .catch((error) => console.error(error));
+  }, []);
 
-  const applyFilters = () => {
-    let filteredData = [...data];
+  // Fonction pour mélanger un tableau (Fisher-Yates Shuffle)
+  const shuffleArray = (array: any[]): any[] => {
+    let currentIndex = array.length,
+      randomIndex;
 
-    filteredData = applyNameFilter(filteredData);
-    filteredData = applyNiveauEtudeFilter(filteredData);
-    filteredData = applyLocalisationFilter(filteredData);
-    filteredData = applyTypeEtablissementFilter(filteredData);
-    filteredData = applyServicesParaScolaireFilter(filteredData);
-    filteredData = applyFormationFilter(filteredData);
+    // Tant qu'il reste des éléments à mélanger...
+    while (currentIndex !== 0) {
+      // Choisir un élément restant...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
 
-    setFilterData(filteredData);
+      // Et échanger avec l'élément courant
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+
+    return array;
   };
 
-  const applyNameFilter = (filteredData: any[]) => {
-    const { nomEtablissement } = filterState;
-    if (nomEtablissement.trim() === "") return filteredData;
-    const nameTag = nomEtablissement.toLowerCase();
-    return filteredData.filter((school: any) =>
-      school.name.toLowerCase().includes(nameTag)
-    );
-  };
-
-  const applyNiveauEtudeFilter = (filteredData: any[]) => {
-    const { niveauEtude } = filterState;
-    if (niveauEtude.trim() === "") return filteredData;
-    const niveauEtudeTag = niveauEtude.toLowerCase();
-    return filteredData.filter((school: any) =>
-      school.niveauEtude.toLowerCase().includes(niveauEtudeTag)
-    );
-  };
-
-  const applyLocalisationFilter = (filteredData: any[]) => {
-    const { localisation } = filterState;
-    if (localisation.trim() === "") return filteredData;
-    const localisationTag = localisation.toLowerCase();
-    return filteredData.filter((school: any) =>
-      school.localisation.toLowerCase().includes(localisationTag)
-    );
-  };
-
-  const applyTypeEtablissementFilter = (filteredData: any[]) => {
-    const { typeEtablissement } = filterState;
-    if (typeEtablissement.trim() === "") return filteredData;
-    const typeEtablissementTag = typeEtablissement.toLowerCase();
-    return filteredData.filter((school: any) =>
-      school.typeEtablissement.toLowerCase().includes(typeEtablissementTag)
-    );
-  };
-
-  const applyServicesParaScolaireFilter = (filteredData: any[]) => {
-    const { servicesParaScolaire } = filterState;
-    if (servicesParaScolaire.length === 0) return filteredData;
-    return filteredData.filter((school: any) =>
-      servicesParaScolaire.every((service: string) =>
-        school.servicesParaScolaire.includes(service)
-      )
-    );
-  };
-
-  const applyFormationFilter = (filteredData: any[]) => {
-    const { formation } = filterState;
-    if (formation.trim() === "") return filteredData;
-
-    const fomationsList: GroupedFormationsType = groupedFormations;
-
-    const selectedFormations: string[] = fomationsList[formation] || [];
-
-    return filteredData.filter((school: any) =>
-      school.program.LicenceMaster.some((element: any) =>
-        element.formations.some((formation: string) =>
-          selectedFormations.includes(formation)
-        )
-      )
-    );
-  };
+  const filteredData = useFilteredData(data, filterState);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    applyFilters();
-    setSearcheEvent(true)
+    setSearcheEvent(true);
   };
 
   const handleFilterChange = (newFilterState: Partial<FilterState>) => {
@@ -132,86 +186,110 @@ function SearchFullList() {
     }));
   };
 
+  const toggleFormVisibility = () => {
+    setIsFormVisible(!isFormVisible);
+  };
+
   return (
     <div className="px-4">
       <div className="fixed bottom-0">
         <AlertInfo searchEvent={searchEvent} />
       </div>
-      <div className="bg-gray-100 p-6 rounded-lg shadow-lg mb-8 max-w-4xl mx-auto">
-        <h2 className="text-2xl font-bold mb-4 text-center">
-          Rechercher des Écoles
-        </h2>
-        <form className="space-y-4" onSubmit={handleSubmit}>
-          <Box sx={{ width: 1 }}>
-            <TextField
-              fullWidth
-              label="Nom de l'établissement"
-              id="nomEtablissement"
-              value={filterState.nomEtablissement}
-              onChange={(e) =>
-                handleFilterChange({ nomEtablissement: e.target.value })
+        <div className="bg-gray-100 p-6 rounded-lg shadow-lg mb-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-12">
+            <FilterAltIcon onClick={toggleFormVisibility} className="text-3xl" />
+            <h2 onClick={toggleFormVisibility} className="col-span-10 text-2xl font-bold text-center cursor-pointer">
+              Rechercher des Écoles <br /> {!isFormVisible && <span className="text-sm font-normal leading-none">Utilisez le filtre pour trouver une école</span>}
+            </h2>
+            <Image
+              src={ReinitIcon}
+              alt="reinit"
+              className="w-10 cursor-pointer"
+              onClick={() =>
+                setFilterState({
+                  nomEtablissement: "",
+                  formation: "",
+                  niveauEtude: "",
+                  localisation: "",
+                  typeEtablissement: "",
+                  servicesParaScolaire: [],
+                })
               }
             />
-          </Box>
-          <Box sx={{ width: 1 }}>
-            <FormationSelect
-              formation={filterState.formation}
-              setFormation={(value: string) =>
-                handleFilterChange({ formation: value })
-              }
-            />
-          </Box>
-          <Stack
-            spacing={3}
-            direction={{ xs: "column", md: "row" }}
-            sx={{ marginBottom: 4, width: 1 }}
-            className="flex justify-center"
-          >
-            <NiveauSelect
-              niveauEtude={filterState.niveauEtude}
-              setNiveauEtude={(value: string) =>
-                handleFilterChange({ niveauEtude: value })
-              }
-            />
-            <LocalisationSelect
-              localisation={filterState.localisation}
-              setLocalisation={(value: string) =>
-                handleFilterChange({ localisation: value })
-              }
-            />
-          </Stack>
-          <Stack
-            spacing={3}
-            direction={{ xs: "column", md: "row" }}
-            sx={{ marginBottom: 4 }}
-            className="flex justify-center"
-          >
-            <TypeSelect
-              typeEtablissement={filterState.typeEtablissement}
-              setTypeEtablissement={(value: string) =>
-                handleFilterChange({ typeEtablissement: value })
-              }
-            />
-            <ServiceSelect
-              servicesParaScolaire={filterState.servicesParaScolaire}
-              setServicesParaScolaire={(value: string[]) =>
-                handleFilterChange({ servicesParaScolaire: value })
-              }
-            />
-          </Stack>
-
-          <div className="text-center">
-            <button
-              type="submit"
-              className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-5 rounded-full md:w-3/5"
-            >
-              Rechercher
-            </button>
           </div>
-        </form>
-      </div>
+          {isFormVisible && (
+            <form className="space-y-4" onSubmit={handleSubmit}>
+              <Box sx={{ width: 1 }}>
+                <TextField
+                  fullWidth
+                  label="Nom de l'établissement"
+                  id="nomEtablissement"
+                  value={filterState.nomEtablissement}
+                  onChange={(e) =>
+                    handleFilterChange({ nomEtablissement: e.target.value })
+                  }
+                />
+              </Box>
+              <Box sx={{ width: 1 }}>
+                <FormationSelect
+                  formation={filterState.formation}
+                  setFormation={(value) =>
+                    handleFilterChange({ formation: value })
+                  }
+                />
+              </Box>
+              <Stack
+                spacing={3}
+                direction={{ xs: "column", md: "row" }}
+                sx={{ marginBottom: 4, width: 1 }}
+                className="flex justify-center"
+              >
+                <NiveauSelect
+                  niveauEtude={filterState.niveauEtude}
+                  setNiveauEtude={(value) =>
+                    handleFilterChange({ niveauEtude: value })
+                  }
+                />
+                <LocalisationSelect
+                  localisation={filterState.localisation}
+                  setLocalisation={(value) =>
+                    handleFilterChange({ localisation: value })
+                  }
+                />
+              </Stack>
+              <Stack
+                spacing={3}
+                direction={{ xs: "column", md: "row" }}
+                sx={{ marginBottom: 4 }}
+                className="flex justify-center"
+              >
+                <TypeSelect
+                  typeEtablissement={filterState.typeEtablissement}
+                  setTypeEtablissement={(value) =>
+                    handleFilterChange({ typeEtablissement: value })
+                  }
+                />
+                <ServiceSelect
+                  servicesParaScolaire={filterState.servicesParaScolaire}
+                  setServicesParaScolaire={(value) =>
+                    handleFilterChange({ servicesParaScolaire: value })
+                  }
+                />
+              </Stack>
 
-      <ResultTable data={filterData} />
+              <div className="text-center">
+                <button
+                  type="submit"
+                  className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-5 rounded-full md:w-3/5"
+                >
+                  Rechercher
+                </button>
+              </div>
+            </form>
+          )}
+        </div>
+
+      <ResultTable data={filteredData} />
     </div>
   );
 }

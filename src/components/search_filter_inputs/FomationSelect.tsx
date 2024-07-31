@@ -15,14 +15,24 @@ const FormationSelect: React.FC<FormationProps> = ({
   formation,
   setFormation,
 }) => {
-  const [listCategory, setListCategory] = React.useState<string[]>([]);
+  const [listCategory, setListCategory] = React.useState<any>([]);
+
+  const getAllDomaines = async () => {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/domaine/all-domaine`);
+
+    if (response.ok) {
+      const result = await response.json();
+      setListCategory(result)
+    }
+  }
 
   React.useEffect(() => {
-    let catList: string[] = [];
-    Object.keys(groupedFormations).forEach((category) => {
-      catList.push(category);
-    });
-    setListCategory(catList);
+    getAllDomaines();
+    // let catList: string[] = [];
+    // Object.keys(groupedFormations).forEach((category) => {
+    //   catList.push(category);
+    // });
+    // setListCategory(catList);
   }, []);
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -39,10 +49,10 @@ const FormationSelect: React.FC<FormationProps> = ({
         onChange={handleChange}
         label="Formation"
       >
-        {listCategory.map((i, index) => {
+        {listCategory && listCategory.map((i: any, index: number) => {
           return (
             <MenuItem key={`formationCategori${index}`} value={i}>
-              <span className="text-wrap">{i}</span>
+              <span className="text-wrap">{i.name}</span>
             </MenuItem>
           );
         })}

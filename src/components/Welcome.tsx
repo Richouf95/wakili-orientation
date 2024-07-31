@@ -1,8 +1,14 @@
+'use client'
+
 import Image from "next/image";
 import Link from "next/link";
 import landingImage from "/public/images/Group171.png";
+import useAuthContext from "@/hooks/useAuthContext";
 
 function Welcome() {
+
+  const { schoolOwner } = useAuthContext();
+
   return (
     <div className="constaine md:w-3/4 m-auto">
       <div>
@@ -22,12 +28,21 @@ function Welcome() {
           mieux à vos attentes et aspirations académiques.
         </p>
       </div>
-      <div className="flex justify-center">
-        <Link href="/search">
-          <button className="my-5 px-10 py-3 bg-orange-400 btn hover:bg-orange-500 text-white font-bold rounded-full">
-            Consulter la liste
-          </button>
-        </Link>
+      <div className="grid grid-cols-12 mb-5">
+        <div className="col-span-12 md:col-span-6 flex justify-center md:justify-end md:mx-5">
+          <Link href="/search">
+            <button className="min-w-72 my-5 px-10 py-3 bg-orange-400 btn hover:bg-orange-500 text-white font-bold rounded-full">
+              Consulter la liste
+            </button>
+          </Link>
+        </div>
+        <div className="col-span-12 md:col-span-6 flex justify-center md:justify-start md:mx-5">
+          <Link href={`${schoolOwner ? "/owne-school" : "/login"}`}>
+            <button className="min-w-72 my-5 px-10 py-3 bg-[#505958bb] btn hover:bg-[#505958] text-white font-bold rounded-full">
+              Je suis un établissement
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );

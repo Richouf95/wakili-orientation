@@ -1,0 +1,24 @@
+/* App.css */
+
+.main-container {
+	z-index: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+.editor-container {
+	width: 100%;
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+.editor-container__editor {
+	box-sizing: border-box;
+}
+
+.ck-editor__editable_inline {
+	min-height: 300px;
+}
