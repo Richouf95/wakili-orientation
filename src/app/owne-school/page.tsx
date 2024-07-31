@@ -39,7 +39,7 @@ function SchoolOwner() {
       }
 
     }
-  }, [schoolOwner, schoolCreated]);
+  }, [schoolOwner, schoolCreated, router]);
 
   if (isLoading) {
     return (

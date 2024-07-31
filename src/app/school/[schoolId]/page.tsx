@@ -30,7 +30,7 @@ export default function Scool({ params }: { params: { schoolId: string } }) {
     };
 
     getThisSchool();
-  }, []);
+  }, [schoolId]);
 
   const tabs = [
     {

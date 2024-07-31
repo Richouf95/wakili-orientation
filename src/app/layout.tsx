@@ -31,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta property="og:site_name" content="Orientation | Wakili Services" />
         <meta property="og:author" content="Wouri Chouf" />
         <meta property="og:locale" content="fr_FR" />
-        <script src="https://cdn.ckbox.io/ckbox/latest/ckbox.js"></script>
+        <script src="https://cdn.ckbox.io/ckbox/latest/ckbox.js" defer></script>
       </head>
       <AuthContextProvider>
         <body className="flex flex-col min-h-screen">

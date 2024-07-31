@@ -48,7 +48,7 @@ const SimpleMap: React.FC<SimpleMapProps> = ({ schoolLocation }) => {
         setMapCoordonnee(location[x]);
       }
     });
-  }, []);
+  }, [schoolLocation]);
 
   const coorrdonnee = mapCoordonnee != undefined
     ? `https://api.maptiler.com/maps/basic-v2/?key=pge3bZ7Av8hHr0u6eHJS#15.5/${mapCoordonnee.lat}/${mapCoordonnee.lng}`

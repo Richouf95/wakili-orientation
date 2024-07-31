@@ -32,7 +32,7 @@ const useFilterData = (initialData) => {
     //   item.niveauEtude.toLowerCase().includes(lowercasedFilter)
     // );
     // setFilteredData(newFilteredData);
-  }, [filter, initialData]);
+  }, [filter, initialData, filteredData]);
 
   return { filter, handleFilterChange, filteredData };
 };

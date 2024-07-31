@@ -92,7 +92,7 @@ const OwneSchoolSpace: React.FC<OwneSchoolSpaceProps> = ({ thisSchool }) => {
     if (schoolLogo) {
       updateLogo();
     }
-  }, [schoolLogo]); // Met à jour uniquement lorsque schoolLogo change
+  }, [schoolLogo, updateLogo]); // Met à jour uniquement lorsque schoolLogo change
 
   const handleSchoolLogo = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
