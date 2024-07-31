@@ -190,8 +190,6 @@ const UpdateOwnSchoolProgram: React.FC<AupdateOwnSchoolProgramProps> = ({
       },
     };
 
-    console.log(formation);
-
     if (domaineListAutre && newDomaine != "") {
       const createDomaine = await fetch(
         `${process.env.NEXT_PUBLIC_API_DOMAIN}/domaine/create-domaine`,

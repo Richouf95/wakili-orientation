@@ -28,12 +28,9 @@ function ContactForm() {
         )
         .then(
           (result) => {
-            console.log(result.text);
             alert("Message envoyé avec succès!");
-            // handleClose();
           },
           (error) => {
-            console.log(error.text);
             alert("Une erreur s'est produite ! \nVeuillez renvoyer le message");
           }
         );

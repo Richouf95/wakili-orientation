@@ -54,8 +54,6 @@ const SimpleMap: React.FC<SimpleMapProps> = ({ schoolLocation }) => {
     ? `https://api.maptiler.com/maps/basic-v2/?key=pge3bZ7Av8hHr0u6eHJS#15.5/${mapCoordonnee.lat}/${mapCoordonnee.lng}`
     : "https://api.maptiler.com/maps/basic-v2/?key=pge3bZ7Av8hHr0u6eHJS#4.5/17.85958/8.67502";
 
-    console.log(coorrdonnee)
-
   return (
       <iframe
         className="w-full min-h-96 lg:h-4/5 rounded-lg"

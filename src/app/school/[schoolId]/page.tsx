@@ -42,8 +42,6 @@ export default function Scool({ params }: { params: { schoolId: string } }) {
       content: <ProgramsSchool schoolId={schoolId} />,
     },
   ];
-  
-  console.log(thisSchool)
 
   return (
     <div>

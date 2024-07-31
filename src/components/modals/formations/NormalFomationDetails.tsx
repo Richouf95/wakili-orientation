@@ -37,8 +37,6 @@ const NormalFomationDetails: React.FC<NormalFomationDetailsProps> = ({
 }) => {
   const [openModal, setOpenModal] = useState<string | null>(null);
 
-  console.log("\t =====+> : ", isOwner);
-
   const handleOpen = (id: string) => setOpenModal(id);
   const handleClose = () => setOpenModal(null);
 

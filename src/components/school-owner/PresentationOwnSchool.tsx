@@ -77,7 +77,7 @@ const PresentationOwnSchool: React.FC<PresentationSchoolProps> = ({
           setSchoolPresentation(result);
           setUpdate(update + 1);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.error(err));
     }
 
     if (response.ok) {
@@ -99,7 +99,7 @@ const PresentationOwnSchool: React.FC<PresentationSchoolProps> = ({
           setSchoolPresentation(result);
           setUpdate(update + 1);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.error(err));
     }
   };
 

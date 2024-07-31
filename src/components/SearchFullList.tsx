@@ -143,8 +143,6 @@ function SearchFullList() {
       .then((response) => response.json())
       .then((result) => {
         const published = result.filter((x: any) => x.publishStatus === true)
-        console.log(result.length)
-        console.log(published.length)
         const shuffledData = shuffleArray(published);
         setData(shuffledData);
       })
