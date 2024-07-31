@@ -15,7 +15,7 @@ const WelcomeTemplate: React.FC<OwneSchoolCreatedProps> = ({ setSchoolCreated })
     if (!localStorage.getItem("schoolOwner")) {
       router.push("/");
     }
-  }, [router]);
+  }, []);
 
   return (
     <div className="p-3">

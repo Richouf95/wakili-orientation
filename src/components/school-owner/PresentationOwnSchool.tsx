@@ -46,7 +46,7 @@ const PresentationOwnSchool: React.FC<PresentationSchoolProps> = ({
     };
 
     fetchSchoolPresentation();
-  }, [update, schoolId]);
+  }, [update]);
 
   const handleUpdateClick = () => {
     setEditorData(schoolPresentation.content);

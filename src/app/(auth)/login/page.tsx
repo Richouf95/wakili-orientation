@@ -35,7 +35,7 @@ function Login() {
     if (!isLoading && localStorage.getItem("schoolOwner")) {
       router.push("/owne-school");
     }
-  }, [isLoading, router]);
+  }, [isLoading]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

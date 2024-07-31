@@ -126,7 +126,7 @@ const UpdateOwnSchoolProgram: React.FC<AupdateOwnSchoolProgramProps> = ({
     }
 
     getAllDomaines();
-  }, [program.detailsProgram]);
+  }, []);
 
   const addInputPrerequis = () => {
     setInputPrerequis([...inputPrerequis, ""]);

@@ -6,6 +6,7 @@ import React, { createContext, useEffect, useReducer, ReactNode } from 'react';
 interface SchoolOwner {
   name: string;
   token: string;
+  schoolOwnerId: string;
 }
 
 interface AuthState {
