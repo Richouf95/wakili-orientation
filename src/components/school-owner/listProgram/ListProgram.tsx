@@ -14,7 +14,6 @@ interface ListProgramProps {
 const ListProgram: React.FC<ListProgramProps> = ({ schoolId }) => {
   const [isLoading, setLoading] = useState(true);
   const [schoolPrograms, setSchoolPrograms] = useState<any>(null);
-  const [thisProgramSchool, setThisProgramSchool] = useState<any>(null);
   const [isOwner, setIsOwner] = useState<boolean>(false);
   const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false);
   const [listDomaines, setListDomaines] = useState<any>();
@@ -36,7 +35,9 @@ const ListProgram: React.FC<ListProgramProps> = ({ schoolId }) => {
     };
 
     const getFormationDomain = async () => {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/domaine/all-domaine`);
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_DOMAIN}/domaine/all-domaine`
+      );
 
       if (response.ok) {
         const result = await response.json();
@@ -45,12 +46,16 @@ const ListProgram: React.FC<ListProgramProps> = ({ schoolId }) => {
     };
 
     const thisProgramScool = async () => {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/school/${schoolId}`);
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_DOMAIN}/school/${schoolId}`
+      );
 
       if (response.ok) {
         const result = await response.json();
-        setThisProgramSchool(result);
-        if (result.ownerAcount === schoolOwner?.schoolOwnerId) {
+        if (
+          result.ownerAcount === schoolOwner?.schoolOwnerId &&
+          schoolOwner?.role !== "supAdmin"
+        ) {
           setIsOwner(true);
         }
       }
@@ -180,8 +185,10 @@ const ListProgram: React.FC<ListProgramProps> = ({ schoolId }) => {
             </div>
           ))}
         </div>
+      ) : isOwner ? (
+        inviteToAddPrograms
       ) : (
-        isOwner ? inviteToAddPrograms : maintenanceInfo
+        maintenanceInfo
       )}
     </>
   );

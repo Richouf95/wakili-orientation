@@ -7,6 +7,8 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import UpdateOwnSchoolProgram from "@/components/school-owner/updateSchool/UpdateOwnSchoolProgram";
+import { usePathname } from "next/navigation";
+
 
 const style = {
   position: "absolute" as "absolute",
@@ -36,9 +38,18 @@ const NormalFomationDetails: React.FC<NormalFomationDetailsProps> = ({
   isOwner
 }) => {
   const [openModal, setOpenModal] = useState<string | null>(null);
+  const [isOwnerEditPage, setIsOwnerEditPage] = useState<boolean>(false);
+
+  const pathname = usePathname();
 
   const handleOpen = (id: string) => setOpenModal(id);
   const handleClose = () => setOpenModal(null);
+
+  useEffect(() => {
+    if (pathname === "/owne-school") {
+      setIsOwnerEditPage(true);
+    }
+  }, [])
 
   return (
     <>
@@ -122,7 +133,7 @@ const NormalFomationDetails: React.FC<NormalFomationDetailsProps> = ({
                 <div>
                   <hr />
                 </div>
-                {isOwner && (
+                {isOwner && isOwnerEditPage && (
                   <div className="flex justify-end mt-5">
                     <UpdateOwnSchoolProgram program={element} />
                   </div>

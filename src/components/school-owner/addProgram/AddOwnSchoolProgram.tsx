@@ -96,7 +96,10 @@ const AddOwnSchoolProgram: React.FC<AddOwnSchoolProgramProps> = ({
 
       if (response.ok) {
         const result = await response.json();
-        setDomaineList(result);
+        const special = result.filter((x: any) => x.name === "Non identifié")
+        const other = result.filter((x: any) => x.name !== "Non identifié")
+        const greatDomaineList = [...special, other]
+        setDomaineList(greatDomaineList);
       }
     };
 
@@ -239,6 +242,8 @@ const AddOwnSchoolProgram: React.FC<AddOwnSchoolProgramProps> = ({
   const validateStepOne = () => {
     return arrete && name && niveau && sousNiveau && domaine;
   };
+
+  
 
   const infoGeneralProgram = (
     <>

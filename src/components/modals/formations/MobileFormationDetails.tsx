@@ -5,7 +5,8 @@ import Button from "@mui/material/Button";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import CloseIcon from "@mui/icons-material/Close";
 import UpdateOwnSchoolProgram from "@/components/school-owner/updateSchool/UpdateOwnSchoolProgram";
-import useAuthContext from "@/hooks/useAuthContext";
+import { usePathname } from "next/navigation";
+
 
 interface BottomDrawerProps {
   program: any;
@@ -15,7 +16,15 @@ interface BottomDrawerProps {
 
 const BottomDrawer: React.FC<BottomDrawerProps> = ({ program, category, isOwner }) => {
   const [openDrawer, setOpenDrawer] = React.useState<string | null>(null);
-  const { schoolOwner } = useAuthContext();
+  const [isOwnerEditPage, setIsOwnerEditPage] = React.useState<boolean>(false);
+
+  const pathname = usePathname();
+
+  React.useEffect(() => {
+    if (pathname === "/owne-school") {
+      setIsOwnerEditPage(true);
+    }
+  }, [])
 
   const toggleDrawer =
     (id: string | null) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -126,7 +135,7 @@ const BottomDrawer: React.FC<BottomDrawerProps> = ({ program, category, isOwner 
                 <div>
                   <hr />
                 </div>
-                {isOwner && (
+                {isOwner && isOwnerEditPage && (
                   <div className="flex justify-end mt-5">
                     <UpdateOwnSchoolProgram program={element} />
                   </div>

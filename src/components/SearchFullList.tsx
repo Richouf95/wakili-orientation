@@ -14,7 +14,9 @@ import ResultTable from "@/components/ResultTable/ResultTable";
 import AlertInfo from "@/components/AlertInfo";
 import ReinitIcon from "/public/images/icon_reinit.png";
 import Image from "next/image";
-import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import FilterAltIcon from "@mui/icons-material/FilterAlt";
+import PuslishedSelect from "./supAdmin/PuslisedSelect";
+import useAuthContext from "@/hooks/useAuthContext";
 
 interface FilterState {
   nomEtablissement: string;
@@ -23,6 +25,7 @@ interface FilterState {
   localisation: string;
   typeEtablissement: string;
   servicesParaScolaire: string[];
+  publishedStatus: boolean;
 }
 
 interface GroupedFormationsType {
@@ -35,6 +38,14 @@ function useFilteredData(data: any[], filterState: any) {
   useEffect(() => {
     const applyFilters = async () => {
       let filteredData = [...data];
+
+      const applyPublishedStatusFilter = () => {
+        const { publishedStatus } = filterState;
+        if (typeof publishedStatus !== "boolean") return;
+        filteredData = filteredData.filter(
+          (school) => school.publishStatus === publishedStatus
+        );
+      };
 
       const applyNameFilter = () => {
         const { nomEtablissement } = filterState;
@@ -115,6 +126,7 @@ function useFilteredData(data: any[], filterState: any) {
       applyTypeEtablissementFilter();
       applyServicesParaScolaireFilter();
       await applyFormationFilter();
+      applyPublishedStatusFilter();
 
       setFilteredData(filteredData);
     };
@@ -134,20 +146,27 @@ function SearchFullList() {
     localisation: "",
     typeEtablissement: "",
     servicesParaScolaire: [],
+    publishedStatus: true,
   });
   const [searchEvent, setSearcheEvent] = useState(false);
   const [isFormVisible, setIsFormVisible] = useState(false);
+  const { schoolOwner } = useAuthContext();
 
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/school/all-schools`)
       .then((response) => response.json())
       .then((result) => {
-        const published = result.filter((x: any) => x.publishStatus === true)
-        const shuffledData = shuffleArray(published);
-        setData(shuffledData);
+        const published = result.filter((x: any) => x.publishStatus === true);
+        if (schoolOwner && schoolOwner.role === "supAdmin") {
+          const shuffledData = shuffleArray(result);
+          setData(shuffledData);
+        } else {
+          const shuffledData = shuffleArray(published);
+          setData(shuffledData);
+        }
       })
       .catch((error) => console.error(error));
-  }, []);
+  }, [filterState.publishedStatus]);
 
   // Fonction pour mélanger un tableau (Fisher-Yates Shuffle)
   const shuffleArray = (array: any[]): any[] => {
@@ -193,99 +212,116 @@ function SearchFullList() {
       <div className="fixed bottom-0">
         <AlertInfo searchEvent={searchEvent} />
       </div>
-        <div className="bg-gray-100 p-6 rounded-lg shadow-lg mb-8 max-w-4xl mx-auto">
-          <div className="grid grid-cols-12">
-            <FilterAltIcon onClick={toggleFormVisibility} className="text-3xl" />
-            <h2 onClick={toggleFormVisibility} className="col-span-10 text-2xl font-bold text-center cursor-pointer">
-              Rechercher des Écoles <br /> {!isFormVisible && <span className="text-sm font-normal leading-none">Utilisez le filtre pour trouver une école</span>}
-            </h2>
-            <Image
-              src={ReinitIcon}
-              alt="reinit"
-              className="w-10 cursor-pointer"
-              onClick={() =>
-                setFilterState({
-                  nomEtablissement: "",
-                  formation: "",
-                  niveauEtude: "",
-                  localisation: "",
-                  typeEtablissement: "",
-                  servicesParaScolaire: [],
-                })
-              }
-            />
-          </div>
-          {isFormVisible && (
-            <form className="space-y-4" onSubmit={handleSubmit}>
-              <Box sx={{ width: 1 }}>
-                <TextField
-                  fullWidth
-                  label="Nom de l'établissement"
-                  id="nomEtablissement"
-                  value={filterState.nomEtablissement}
-                  onChange={(e) =>
-                    handleFilterChange({ nomEtablissement: e.target.value })
-                  }
-                />
-              </Box>
-              <Box sx={{ width: 1 }}>
-                <FormationSelect
-                  formation={filterState.formation}
-                  setFormation={(value) =>
-                    handleFilterChange({ formation: value })
-                  }
-                />
-              </Box>
-              <Stack
-                spacing={3}
-                direction={{ xs: "column", md: "row" }}
-                sx={{ marginBottom: 4, width: 1 }}
-                className="flex justify-center"
-              >
-                <NiveauSelect
-                  niveauEtude={filterState.niveauEtude}
-                  setNiveauEtude={(value) =>
-                    handleFilterChange({ niveauEtude: value })
-                  }
-                />
-                <LocalisationSelect
-                  localisation={filterState.localisation}
-                  setLocalisation={(value) =>
-                    handleFilterChange({ localisation: value })
-                  }
-                />
-              </Stack>
-              <Stack
-                spacing={3}
-                direction={{ xs: "column", md: "row" }}
-                sx={{ marginBottom: 4 }}
-                className="flex justify-center"
-              >
-                <TypeSelect
-                  typeEtablissement={filterState.typeEtablissement}
-                  setTypeEtablissement={(value) =>
-                    handleFilterChange({ typeEtablissement: value })
-                  }
-                />
-                <ServiceSelect
-                  servicesParaScolaire={filterState.servicesParaScolaire}
-                  setServicesParaScolaire={(value) =>
-                    handleFilterChange({ servicesParaScolaire: value })
-                  }
-                />
-              </Stack>
-
-              <div className="text-center">
-                <button
-                  type="submit"
-                  className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-5 rounded-full md:w-3/5"
-                >
-                  Rechercher
-                </button>
-              </div>
-            </form>
-          )}
+      <div className="bg-gray-100 p-6 rounded-lg shadow-lg mb-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-12">
+          <FilterAltIcon onClick={toggleFormVisibility} className="text-3xl" />
+          <h2
+            onClick={toggleFormVisibility}
+            className="col-span-10 text-2xl font-bold text-center cursor-pointer"
+          >
+            Rechercher des Écoles <br />{" "}
+            {!isFormVisible && (
+              <span className="text-sm font-normal leading-none">
+                Utilisez le filtre pour trouver une école
+              </span>
+            )}
+          </h2>
+          <Image
+            src={ReinitIcon}
+            alt="reinit"
+            className="w-10 cursor-pointer"
+            onClick={() =>
+              setFilterState({
+                nomEtablissement: "",
+                formation: "",
+                niveauEtude: "",
+                localisation: "",
+                typeEtablissement: "",
+                servicesParaScolaire: [],
+                publishedStatus: false,
+              })
+            }
+          />
         </div>
+        {isFormVisible && (
+          <form className="space-y-4 mt-5" onSubmit={handleSubmit}>
+            {schoolOwner && schoolOwner.role === "supAdmin" && (
+              <PuslishedSelect
+                publishedStatus={filterState.publishedStatus}
+                setPublishedStatus={(value) =>
+                  handleFilterChange({ publishedStatus: value })
+                }
+              />
+            )}
+            <Box sx={{ width: 1 }}>
+              <TextField
+                fullWidth
+                label="Nom de l'établissement"
+                id="nomEtablissement"
+                value={filterState.nomEtablissement}
+                onChange={(e) =>
+                  handleFilterChange({ nomEtablissement: e.target.value })
+                }
+              />
+            </Box>
+            <Box sx={{ width: 1 }}>
+              <FormationSelect
+                formation={filterState.formation}
+                setFormation={(value) =>
+                  handleFilterChange({ formation: value })
+                }
+              />
+            </Box>
+            <Stack
+              spacing={3}
+              direction={{ xs: "column", md: "row" }}
+              sx={{ marginBottom: 4, width: 1 }}
+              className="flex justify-center"
+            >
+              <NiveauSelect
+                niveauEtude={filterState.niveauEtude}
+                setNiveauEtude={(value) =>
+                  handleFilterChange({ niveauEtude: value })
+                }
+              />
+              <LocalisationSelect
+                localisation={filterState.localisation}
+                setLocalisation={(value) =>
+                  handleFilterChange({ localisation: value })
+                }
+              />
+            </Stack>
+            <Stack
+              spacing={3}
+              direction={{ xs: "column", md: "row" }}
+              sx={{ marginBottom: 4 }}
+              className="flex justify-center"
+            >
+              <TypeSelect
+                typeEtablissement={filterState.typeEtablissement}
+                setTypeEtablissement={(value) =>
+                  handleFilterChange({ typeEtablissement: value })
+                }
+              />
+              <ServiceSelect
+                servicesParaScolaire={filterState.servicesParaScolaire}
+                setServicesParaScolaire={(value) =>
+                  handleFilterChange({ servicesParaScolaire: value })
+                }
+              />
+            </Stack>
+
+            <div className="text-center">
+              <button
+                type="submit"
+                className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-5 rounded-full md:w-3/5"
+              >
+                Rechercher
+              </button>
+            </div>
+          </form>
+        )}
+      </div>
 
       <ResultTable data={filteredData} />
     </div>

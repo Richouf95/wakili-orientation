@@ -7,6 +7,7 @@ interface SchoolOwner {
   name: string;
   token: string;
   schoolOwnerId: string;
+  role: string
 }
 
 interface AuthState {

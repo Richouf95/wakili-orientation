@@ -24,7 +24,7 @@ function SchoolOwner() {
     if (owner) {
       const thisOwner = JSON.parse(owner);
       if (thisOwner.role === "supAdmin") {
-        router.push('/richouf')
+        router.push('/search')
       }
 
       if (thisOwner.role === "school") {
@@ -43,7 +43,7 @@ function SchoolOwner() {
 
   if (isLoading) {
     return (
-      <div className="text-center">
+      <div className="text-center mt-24">
         <div role="status">
           <svg
             aria-hidden="true"
