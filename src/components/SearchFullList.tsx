@@ -128,6 +128,18 @@ function useFilteredData(data: any[], filterState: any) {
       await applyFormationFilter();
       applyPublishedStatusFilter();
 
+      if (
+        filterState.nomEtablissement === "" &&
+        filterState.formation === "" &&
+        filterState.niveauEtude === "" &&
+        filterState.localisation === "" &&
+        filterState.typeEtablissement === "" &&
+        filterState.servicesParaScolaire.length === 0 &&
+        filterState.publishedStatus === false
+      ) {
+        filteredData = [...data];
+      }
+
       setFilteredData(filteredData);
     };
 

@@ -16,8 +16,11 @@ const ResultTable = ({ data }: any) => {
 
   useEffect(() => {
     if (Array.isArray(data)) {
-      setSchoolsList(data);
-      setIsLoading(false);
+      setIsLoading(true)
+      setTimeout(() => {
+        setSchoolsList(data);
+        setIsLoading(false);
+      }, 2000);
     }
   }, [data]);
 
