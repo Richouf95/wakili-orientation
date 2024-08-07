@@ -204,7 +204,7 @@ const ResultTable = ({ data }: any) => {
         </button>
 
         <span className="mx-4">
-          Page {currentPage + 1} sur {totalPages + 1}
+          Page {currentPage + 1} sur {totalPages > 0 ? totalPages : totalPages === 0 && totalPages + 1}
         </span>
 
         <button
