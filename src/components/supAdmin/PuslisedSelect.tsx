@@ -19,7 +19,7 @@ const PuslishedSelect: React.FC<PuslisedSelectProps> = ({
   };
 
   return (
-    <FormControl fullWidth>
+    <FormControl sx={{ width: '100%', height: '56px' }}>
       <InputLabel id="published-select-label">{`Publié ( true / false )`}</InputLabel>
       <Select
         labelId="published-select-label"

@@ -162,23 +162,29 @@ function SearchFullList() {
   });
   const [searchEvent, setSearcheEvent] = useState(false);
   const [isFormVisible, setIsFormVisible] = useState(false);
+  const [reinit, setReinit] = useState<number>(0);
   const { schoolOwner } = useAuthContext();
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/school/all-schools`)
-      .then((response) => response.json())
-      .then((result) => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_DOMAIN}/school/all-schools`
+        );
+        const result = await response.json();
         const published = result.filter((x: any) => x.publishStatus === true);
-        if (schoolOwner && schoolOwner.role === "supAdmin") {
-          const shuffledData = shuffleArray(result);
-          setData(shuffledData);
-        } else {
-          const shuffledData = shuffleArray(published);
-          setData(shuffledData);
-        }
-      })
-      .catch((error) => console.error(error));
-  }, [filterState.publishedStatus]);
+        const shuffledData =
+          schoolOwner && schoolOwner.role === "supAdmin"
+            ? shuffleArray(result)
+            : shuffleArray(published);
+        setData(shuffledData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, [filterState.publishedStatus, schoolOwner, reinit]);
 
   // Fonction pour mélanger un tableau (Fisher-Yates Shuffle)
   const shuffleArray = (array: any[]): any[] => {
@@ -241,8 +247,8 @@ function SearchFullList() {
           <Image
             src={ReinitIcon}
             alt="reinit"
-            className="w-10 cursor-pointer"
-            onClick={() =>
+            className="w-10 h-6 md:h-10 cursor-pointer"
+            onClick={() => {
               setFilterState({
                 nomEtablissement: "",
                 formation: "",
@@ -250,9 +256,10 @@ function SearchFullList() {
                 localisation: "",
                 typeEtablissement: "",
                 servicesParaScolaire: [],
-                publishedStatus: false,
+                publishedStatus: true,
               })
-            }
+              setReinit(reinit + 1);
+            }}
           />
         </div>
         {isFormVisible && (
@@ -265,7 +272,7 @@ function SearchFullList() {
                 }
               />
             )}
-            <Box sx={{ width: 1 }}>
+            <Box sx={{ width: "100%", height: "56px" }}>
               <TextField
                 fullWidth
                 label="Nom de l'établissement"
@@ -276,7 +283,7 @@ function SearchFullList() {
                 }
               />
             </Box>
-            <Box sx={{ width: 1 }}>
+            <Box sx={{ width: "100%", height: "56px" }}>
               <FormationSelect
                 formation={filterState.formation}
                 setFormation={(value) =>
