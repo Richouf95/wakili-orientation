@@ -81,8 +81,8 @@ const SimpleMap: React.FC<SimpleMapProps> = ({ thisSchool }) => {
   }, [thisSchool]);
 
   return (
-    <div className="map-wrap border-2">
-      <div ref={mapContainer} className="w-auto h-auto map" />
+    <div className="map-wrap border-2 rounded-xl">
+      <div ref={mapContainer} className="w-auto h-auto map rounded-xl" />
     </div>
   );
 };

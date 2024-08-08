@@ -148,8 +148,8 @@ const MarkLocation: React.FC<MarkLocationProps> = ({
 
   return (
     <div>
-      <div className="map-wrap border-2" style={{ position: "relative" }}>
-        <div ref={mapContainer} className="map" />
+      <div className="map-wrap border-2 rounded-xl" style={{ position: "relative" }}>
+        <div ref={mapContainer} className="map rounded-xl" />
         <Image
           src={LocateIcon}
           alt="LocateIcon"
