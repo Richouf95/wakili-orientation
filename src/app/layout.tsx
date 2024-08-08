@@ -2,9 +2,6 @@ import "./globals.css";
 import "./ckStyle.css"
 import Image from "next/image";
 import logoWakili from "/public/logoWakili.png";
-import { useEffect } from "react";
-import useFilterData from "@/hooks/useFilterData";
-import ContactUs from "@/components/modals/contactUs/ContactUs";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Link from "next/link";

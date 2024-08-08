@@ -1,6 +1,6 @@
 "use client";
 
-import SimpleMap from "@/components/school/SimpleMap";
+import SimpleMap from "@/components/map/SimpleMap";
 import React, { useEffect, useState } from "react";
 import Tabs from "@/components/school/Tabs";
 import PresentationSchool from "@/components/school-owner/PresentationOwnSchool";
@@ -9,6 +9,7 @@ import BtnSearch from "@/components/ResultTable/BtnSearch";
 import DefaultLogo from "/public/images/schoolDefaultLogo.png";
 import Image from "next/image";
 import UpdateSchool from "./updateSchool/UpdateSchool";
+import MapModal from "../map/MapModal";
 
 interface Coordinate {
   telephone: string | null;
@@ -125,7 +126,11 @@ const OwneSchoolSpace: React.FC<OwneSchoolSpaceProps> = ({ thisSchool }) => {
                     onChange={handleSchoolLogo}
                     aria-label="Upload School Logo"
                   />
-                  <label htmlFor="schoolLogo" className="cursor-pointer text-center"><span>Changer le logo de votre établissement</span>
+                  <label
+                    htmlFor="schoolLogo"
+                    className="cursor-pointer text-center"
+                  >
+                    <span>Changer le logo de votre établissement</span>
                     <Image
                       src={
                         newLogo !== null
@@ -179,51 +184,60 @@ const OwneSchoolSpace: React.FC<OwneSchoolSpaceProps> = ({ thisSchool }) => {
                       <li className="my-2 break-words">
                         Téléphone :{" "}
                         <span className="font-bold">
-                        {thisSchool.coordonnee && thisSchool.coordonnee.telephone
-                          ? thisSchool.coordonnee.telephone
-                          : "N/A"}
-                      </span>
+                          {thisSchool.coordonnee &&
+                          thisSchool.coordonnee.telephone
+                            ? thisSchool.coordonnee.telephone
+                            : "N/A"}
+                        </span>
                       </li>
                       <li className="my-2 break-words">
                         Email :{" "}
                         <span className="font-bold">
-                        {thisSchool.coordonnee && thisSchool.coordonnee.email
-                          ? thisSchool.coordonnee.email
-                          : "N/A"}
-                      </span>
+                          {thisSchool.coordonnee && thisSchool.coordonnee.email
+                            ? thisSchool.coordonnee.email
+                            : "N/A"}
+                        </span>
                       </li>
                       <li className="my-2 break-words">
                         Site web :{" "}
                         <span className="font-bold">
-                        {thisSchool.coordonnee && thisSchool.coordonnee.web ? (
-                          <a
-                            href={thisSchool.coordonnee.web}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {thisSchool.coordonnee.web}
-                          </a>
-                        ) : (
-                          "N/A"
-                        )}
-                      </span>
+                          {thisSchool.coordonnee &&
+                          thisSchool.coordonnee.web ? (
+                            <a
+                              href={thisSchool.coordonnee.web}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {thisSchool.coordonnee.web}
+                            </a>
+                          ) : (
+                            "N/A"
+                          )}
+                        </span>
                       </li>
                     </ul>
                   </li>
                   <li className="my-2 w-auto">
-                  Services Annexes : {(!thisSchool.servicesParaScolaire || thisSchool.servicesParaScolaire.length === 0) && <span className="m-2 p-1 font-bold">N/A</span>} <br />
-                  {thisSchool.servicesParaScolaire && thisSchool.servicesParaScolaire.length > 0 && thisSchool.servicesParaScolaire.map(
-                    (i: string, index: number) => {
-                      return (
-                        <span
-                          key={`schoolServiceAnnex${index}`}
-                          className="bg-gray-200 rounded m-2 p-1 inline-block"
-                        >
-                          {i}
-                        </span>
-                      );
-                    }
-                  )}
+                    Services Annexes :{" "}
+                    {(!thisSchool.servicesParaScolaire ||
+                      thisSchool.servicesParaScolaire.length === 0) && (
+                      <span className="m-2 p-1 font-bold">N/A</span>
+                    )}{" "}
+                    <br />
+                    {thisSchool.servicesParaScolaire &&
+                      thisSchool.servicesParaScolaire.length > 0 &&
+                      thisSchool.servicesParaScolaire.map(
+                        (i: string, index: number) => {
+                          return (
+                            <span
+                              key={`schoolServiceAnnex${index}`}
+                              className="bg-gray-200 rounded m-2 p-1 inline-block"
+                            >
+                              {i}
+                            </span>
+                          );
+                        }
+                      )}
                   </li>
                 </ul>
               </div>
@@ -236,37 +250,12 @@ const OwneSchoolSpace: React.FC<OwneSchoolSpaceProps> = ({ thisSchool }) => {
             </div>
 
             <div className="col-span-12 lg:col-span-6 shadow-lg rounded-lg p-2">
-              {thisSchool.localisation ? (
+              {thisSchool && (
                 <div className="w-full max-h-11/12 md:h-full flex-col items-center">
-                  <SimpleMap schoolLocation={thisSchool.localisation} />
+                  <SimpleMap thisSchool={thisSchool} />
                   <div className="w-full my-2 flex justify-center">
-                    <button className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-2 px-5 mt-5 rounded-full flex items-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth="1.5"
-                        stroke="currentColor"
-                        className="size-6"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                        />
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
-                        />
-                      </svg>
-                      Géolocalisation
-                    </button>
+                    <MapModal thisSchool={thisSchool} />
                   </div>
-                </div>
-              ) : (
-                <div className="w-full max-h-11/12 flex-col items-center">
-                  <SimpleMap schoolLocation={"N/A"} />
                 </div>
               )}
             </div>

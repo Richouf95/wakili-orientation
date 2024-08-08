@@ -1,6 +1,6 @@
 "use client";
 
-import SimpleMap from "@/components/school/SimpleMap";
+import SimpleMap from "@/components/map/SimpleMap";
 import React, { useEffect, useState } from "react";
 import Tabs from "@/components/school/Tabs";
 import PresentationSchool from "@/components/school/PresentationSchool";
@@ -230,7 +230,7 @@ export default function School({ params }: { params: { schoolId: string } }) {
           ) : (
             thisSchool && (
               <div className="w-full h-full flex items-center">
-                <SimpleMap schoolLocation={thisSchool.localisation || "N/A"} />
+                <SimpleMap thisSchool={thisSchool} />
               </div>
             )
           )}
