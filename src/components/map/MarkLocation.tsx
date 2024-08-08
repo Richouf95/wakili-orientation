@@ -63,8 +63,9 @@ const MarkLocation: React.FC<MarkLocationProps> = ({
   });
 
   useEffect(() => {
-    if (mapContainer.current) {
-      maptilersdk.config.apiKey = "pge3bZ7Av8hHr0u6eHJS";
+      const mapkey = process.env.NEXT_PUBLIC_MAPTILER_KEY;
+    if (mapContainer.current && mapkey) {
+      maptilersdk.config.apiKey = mapkey;
       let regionCoordonnees: regionCoordonneesSchema = {
         lat: 0,
         lng: 0,
